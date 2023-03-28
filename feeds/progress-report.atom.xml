@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>FINA4350 Student Blog 2023 - Progress Report</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/" rel="alternate"></link><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/feeds/progress-report.atom.xml" rel="self"></link><id>https://buehlmaier.github.io/FINA4350-student-blog-2023-01/</id><updated>2022-01-31T01:12:00+08:00</updated><entry><title>Demo Blog Post</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/demo-blog-post.html" rel="alternate"></link><published>2022-01-31T01:12:00+08:00</published><updated>2022-01-31T01:12:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2022-01-31:/FINA4350-student-blog-2023-01/demo-blog-post.html</id><summary type="html">&lt;p&gt;By Group "Super NLP"&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>FINA4350 Student Blog 2023 - Progress Report</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/" rel="alternate"></link><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/feeds/progress-report.atom.xml" rel="self"></link><id>https://buehlmaier.github.io/FINA4350-student-blog-2023-01/</id><updated>2022-03-28T21:09:00+08:00</updated><entry><title>Our Group Work Process: Using NLP to Predict Credit Downgrades (by "Group 4")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/our-group-work-process-using-nlp-to-predict-credit-downgrades-by-group-4.html" rel="alternate"></link><published>2022-03-28T21:09:00+08:00</published><updated>2022-03-28T21:09:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2022-03-28:/FINA4350-student-blog-2023-01/our-group-work-process-using-nlp-to-predict-credit-downgrades-by-group-4.html</id><summary type="html">&lt;p&gt;We just finished our proposal presentation and wanted to take a moment to reflect on our group work process. Our project was initially inspired by a past group’s work on fraud detection. We wondered if we could do something similar and apply it to the credit space for a …&lt;/p&gt;</summary><content type="html">&lt;p&gt;We just finished our proposal presentation and wanted to take a moment to reflect on our group work process. Our project was initially inspired by a past group’s work on fraud detection. We wondered if we could do something similar and apply it to the credit space for a project that seemed feasible.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Project overview&lt;/strong&gt;: Our project looks to use natural language processing (NLP) processes to see if publicly available information could be used to predict the likelihood of a credit downgrade. Credit was an interesting focus given recent events with the China Real Estate market. It seemed like the causes of declines in credit rating across an industry were all very similar and due to an external factor.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Group dynamics&lt;/strong&gt;: Our group dynamics were unique in that only Toby had extensive coding experience, while the rest of us had finance and credit experience. Despite this, we were able to come together and develop a plan. We plan to focus on the China real estate industry and look at past downgrades to train the machine learning model or to select a bag of words from credit agency reports and look at the frequency of those words appearing in our web-scraped text.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Initial work&lt;/strong&gt;: Our initial work focused on finding the best sources of publicly available information to web-scrape, such as credit downgrades, company earning transcripts, annual reports, along with establishing a set of timelines for companies that were downgraded as case studies we can look at. We believe that by using NLP techniques and analyzing publicly available information, we can create a model that predicts credit downgrades accurately. Currently, we plan to use selenium to webscrape, it seems requests won’t work as there is too much javascript.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We are excited to continue working together and see where our project takes us. Stay tuned for updates on our progress!&lt;/p&gt;
+&lt;h2&gt;Some Code Snippets:&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.chrome.service&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Service&lt;/span&gt;
+
+&lt;span class="c1"&gt;# from selenium.webdriver.common.keys import Keys&lt;/span&gt;
+
+&lt;span class="c1"&gt;# from selenium.webdriver.common.by import By&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bs4&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BeautifulSoup&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
+
+&lt;span class="n"&gt;home&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;expanduser&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;~&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# Home directory/folder.&lt;/span&gt;
+&lt;span class="n"&gt;driver&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Chrome&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;service&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Service&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/bin/chromedriver&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# can turn into automatic input with csv file&lt;/span&gt;
+
+&lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;https://www.fitchratings.com/research/corporate-finance/fitch-downgrades-evergrande-subsidiaries-hengda-tianji-to-restricted-default-09-12-2021&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# allow JS/Ajax to load&lt;/span&gt;
+
+&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# filename&lt;/span&gt;
+
+&lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;-&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.html&amp;#39;&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# basic scraping&lt;/span&gt;
+
+&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;w&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;page_source&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;BeautifulSoup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;page_source&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;lxml&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c1"&gt;#print(s.prettify())&lt;/span&gt;
+    &lt;span class="n"&gt;raw_text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_text&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;raw_text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# TBC: add pre-processing here&lt;/span&gt;
+
+&lt;span class="c1"&gt;# TBC: add BoW here&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Progress Report"></category><category term="Group4"></category></entry><entry><title>Demo Blog Post</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/demo-blog-post.html" rel="alternate"></link><published>2022-01-31T01:12:00+08:00</published><updated>2022-01-31T01:12:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2022-01-31:/FINA4350-student-blog-2023-01/demo-blog-post.html</id><summary type="html">&lt;p&gt;By Group "Super NLP"&lt;/p&gt;
 &lt;p&gt;This is a demo blog post. Its purpose is to show how to use the basic
 functionality of Markdown in the context of a blog post.&lt;/p&gt;
 &lt;h2&gt;How to Include a Link and Python Code&lt;/h2&gt;
