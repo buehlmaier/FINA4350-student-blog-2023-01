@@ -22,7 +22,9 @@ view all blog posts, click on "all posts" below.**
 
 Names of student groups (in order of sign-up):
 
-  * Group 4
+  * Group 8
+  * Group TSS
+  * Group Aixchange
 
 The source code of this blog is available on
 [GitHub](https://github.com/buehlmaier/FINA4350-student-blog-2023-01).

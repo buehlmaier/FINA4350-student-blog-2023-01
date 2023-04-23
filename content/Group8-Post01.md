@@ -1,8 +1,8 @@
 ---
-Title: Our Group Work Process: Using NLP to Predict Credit Downgrades (by "Group 4")
+Title: Our Group Work Process: Using NLP to Predict Credit Downgrades (by "Group 8")
 Date: 2022-03-28 21:09
 Category: Progress Report
-Tags: Group4
+Tags: Group8
 ---
 
 We just finished our proposal presentation and wanted to take a moment to reflect on our group work process. Our project was initially inspired by a past group’s work on fraud detection. We wondered if we could do something similar and apply it to the credit space for a project that seemed feasible.
