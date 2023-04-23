@@ -19,7 +19,7 @@ As mentioned previously, projecting the sales growth rate for a company is one o
 
 ###Goal
 
-As mentioned previously, projecting the sales growth rate for a company is one of the most significant aspects of analyzing a company's performance expectations, and this is our main motivation for this project. When valuing a company – whether one does it through DCF (Discounted Cash Flows) or any other cash flow valuation method – the single, most relevant assumption to construct in one’s financial model, is the sales figure which would be projected into the future since all the other financial statement accounts would depend on this input. This is the reason why we believe focusing on the sales growth rate for a company is so significant in financial markets and investments decisions. 
+Our goal is to provide a reliable and accurate model for our sales growth rate predictions based on online customer comments. In order to do that, we are going to focus on two main factors, which are 1) Company’s historical sales data, and 2) consumer sentiment analysis. Sentiment analysis would provide us with a leading-edge advantage over the sales growth’s traditional models used, since those models do not consider how consumers react to the products and services that a company offers. Thus, we would base our analysis on two different aspects of the company’s performance, which will maximize our model accuracy and reflect a more truthful set of projections. Finally, we would use historical data pertaining to the sales figures of the past three years (12 quarters) of the company to project the future sales and to also contrast it with our sentiment analysis results. 
 
 ###Target Company: Microsoft
 
