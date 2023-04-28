@@ -2,6 +2,7 @@
 Title: Demo Blog Post
 Date: 2022-01-31 01:12
 Category: Progress Report
+Tags: Group A
 ---
 
 By Group "Super NLP"
