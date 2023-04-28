@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>FINA4350 Student Blog 2023 - Progress Report</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/" rel="alternate"></link><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/feeds/progress-report.atom.xml" rel="self"></link><id>https://buehlmaier.github.io/FINA4350-student-blog-2023-01/</id><updated>2023-04-14T00:00:00+08:00</updated><entry><title>NLP Project's Blog Post (by "Group TSS")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/nlp-projects-blog-post-by-group-tss.html" rel="alternate"></link><published>2023-04-14T00:00:00+08:00</published><updated>2023-04-14T00:00:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-14:/FINA4350-student-blog-2023-01/nlp-projects-blog-post-by-group-tss.html</id><summary type="html">&lt;p&gt;By Group "TSS"&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>FINA4350 Student Blog 2023 - Progress Report</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/" rel="alternate"></link><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/feeds/progress-report.atom.xml" rel="self"></link><id>https://buehlmaier.github.io/FINA4350-student-blog-2023-01/</id><updated>2023-04-27T11:17:00+08:00</updated><entry><title>Project Diary (by "Sibo")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/project-diary-by-sibo.html" rel="alternate"></link><published>2023-04-27T11:17:00+08:00</published><updated>2023-04-27T11:17:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-27:/FINA4350-student-blog-2023-01/project-diary-by-sibo.html</id><summary type="html">&lt;p&gt;I want to estimate and predict a company’s sales using Natural Language Processing (NLP) and machine learning to analyze its financial statements.&lt;/p&gt;
+&lt;h2&gt;April 3&lt;/h2&gt;
+&lt;p&gt;I choose &lt;em&gt;Coca-Cola Co&lt;/em&gt; (KO) for 2 main reasons. First, it is a worldwide food company listed on the &lt;em&gt;Dow Jones Industrial Average&lt;/em&gt;. Second, its …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I want to estimate and predict a company’s sales using Natural Language Processing (NLP) and machine learning to analyze its financial statements.&lt;/p&gt;
+&lt;h2&gt;April 3&lt;/h2&gt;
+&lt;p&gt;I choose &lt;em&gt;Coca-Cola Co&lt;/em&gt; (KO) for 2 main reasons. First, it is a worldwide food company listed on the &lt;em&gt;Dow Jones Industrial Average&lt;/em&gt;. Second, its &lt;a href="https://www.google.com/finance/quote/KO:NYSE?window=MAX"&gt;stock price&lt;/a&gt; fluctuates, so it is easier to estimate the impact of financial statements on different growing patterns.&lt;/p&gt;
+&lt;p&gt;I download its quarterly reports (10-Q &amp;amp; 10-K) on &lt;a href="https://www.sec.gov/edgar/browse/?CIK=21344&amp;amp;owner=exclude"&gt;SEC EDGAR&lt;/a&gt; from 1998 to 2002 and save them as “.txt” files.&lt;/p&gt;
+&lt;p&gt;I use &lt;code&gt;NLTK&lt;/code&gt; package to tokenize them and remove stop words. I use &lt;code&gt;Pandas&lt;/code&gt; to merge data frames, lower case, and use regular expression. It is also easy to compute Bag-of-Words (BOW) using &lt;code&gt;groupby&lt;/code&gt; and &lt;code&gt;count&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Lower case&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;#39;APple&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lower&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Tokenize&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;nltk.tokenize&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;word_tokenize&lt;/span&gt;
+&lt;span class="n"&gt;word_tokenize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;apple banana&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# All stop words&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;nltk.corpus&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;stopwords&lt;/span&gt;
+&lt;span class="n"&gt;stopwords&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;english&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;April 4&lt;/h2&gt;
+&lt;p&gt;I download the same reports from 1994 to 1997. Three 10-K files (1994-1996) are downloaded on the &lt;a href="https://investors.coca-colacompany.com/filings-reports/annual-filings-10-k?page=4"&gt;company's website&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I downloaded financial statements data (including sales) on &lt;em&gt;Bloomberg&lt;/em&gt; from 1993 to 2022. There is no revenue for 2001Q4, so I substitute it with the average of 2001Q3 and 2002Q1.&lt;/p&gt;
+&lt;h2&gt;April 13&lt;/h2&gt;
+&lt;p&gt;I use unsupervised learning to analyze BOW. I use &lt;strong&gt;k-means clustering&lt;/strong&gt; and &lt;strong&gt;hierarchical clustering&lt;/strong&gt; in &lt;code&gt;SKLearn&lt;/code&gt; package. There are 36 quarters in total. I try from 2 to 8 clusters. The outcomes are not desirable.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.cluster&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;KMeans&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Fit k-means model&lt;/span&gt;
+&lt;span class="n"&gt;k_clust&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;KMeans&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_clusters&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit_predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Visualize the relationship&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;scatter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;k_clust&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;k_clust&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# The code for supervised learning is very similar, can check sklearn documentations&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;April 17&lt;/h2&gt;
+&lt;p&gt;I use supervised learning to analyze BOW. I use &lt;strong&gt;Naïve Bayes&lt;/strong&gt;, &lt;strong&gt;logistic regression&lt;/strong&gt;, and &lt;strong&gt;Random Forest classifier&lt;/strong&gt;. I put 28 quarters (80%) in the training set and 8 quarters in the test set. I classify the outcome variable sales growth into 2 / 3 / 4 classes and compute the predictive accuracy correspondingly.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Train-test split&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.model_selection&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;train_test_split&lt;/span&gt;
+&lt;span class="n"&gt;x_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;train_test_split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;test_size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I also use &lt;strong&gt;linear regression&lt;/strong&gt; and &lt;strong&gt;Random Forest regressor&lt;/strong&gt; for the continuous outcome variable sales growth and compute the mean squared error (MSE) correspondingly.&lt;/p&gt;
+&lt;p&gt;I calculate the &lt;strong&gt;sentiment score&lt;/strong&gt; for each quarter using &lt;em&gt;Afinn&lt;/em&gt; lexicon. There is no significant relationship between sales growth and sentiment score.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;afinn&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Afinn&lt;/span&gt;
+&lt;span class="n"&gt;Afinn&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;score&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;love&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I use &lt;code&gt;NLTK&lt;/code&gt; package to stem and lemmatize after excluding stop words and before calculating BOW.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;nltk.stem&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;PorterStemmer&lt;/span&gt;
+&lt;span class="n"&gt;PorterStemmer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;lovely&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;At night, I start to make the first vision of presentation slides, and I finish on the morning of Apr 18.&lt;/p&gt;
+&lt;h2&gt;April 18&lt;/h2&gt;
+&lt;p&gt;I manually calculate &lt;em&gt;tf-idf&lt;/em&gt; using &lt;code&gt;Pandas&lt;/code&gt; on BOW. Then I input it into all models. There is no increase in performance. 2 references: &lt;a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf"&gt;Wikipedia&lt;/a&gt;, &lt;a href="https://baike.baidu.com/item/tf-idf/8816134"&gt;Baike&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;My teacher advises me to include more details in the slides. So I work on covering more intuition.&lt;/p&gt;</content><category term="Progress Report"></category><category term="Sibo"></category></entry><entry><title>NLP Project's Blog Post (by "Group TSS")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/nlp-projects-blog-post-by-group-tss.html" rel="alternate"></link><published>2023-04-14T00:00:00+08:00</published><updated>2023-04-14T00:00:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-14:/FINA4350-student-blog-2023-01/nlp-projects-blog-post-by-group-tss.html</id><summary type="html">&lt;p&gt;By Group "TSS"&lt;/p&gt;
 &lt;h1&gt;Microsofts' Sales Growth Forecast&lt;/h1&gt;
 &lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;In deciding our topic for this project, our goal was to focus on something that could have a useful and intuitive application in the context of finance and the investment scenario. Thinking about the main factors that influence stock investment decisions and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;By Group "TSS"&lt;/p&gt;
@@ -234,4 +291,4 @@ gazillions using this technique.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;How to Include an Image&lt;/h2&gt;
 &lt;p&gt;Fed Chair Powell is working hard:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Picture showing Powell" src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/images/group-Fintech-Disruption_Powell.jpeg"&gt;&lt;/p&gt;</content><category term="Progress Report"></category></entry></feed>
+&lt;p&gt;&lt;img alt="Picture showing Powell" src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/images/group-Fintech-Disruption_Powell.jpeg"&gt;&lt;/p&gt;</content><category term="Progress Report"></category><category term="Group A"></category></entry></feed>
