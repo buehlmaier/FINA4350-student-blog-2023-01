@@ -1,6 +1,6 @@
 ---
 Title: Our Group Work Process: Using NLP to Predict Credit Downgrades, Part II (by "Group 8")
-Date: 2022-04-30 21:09
+Date: 2023-04-30 21:09
 Category: Progress Report
 Tags: Group8
 ---

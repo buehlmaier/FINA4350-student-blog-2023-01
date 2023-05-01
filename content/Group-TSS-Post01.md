@@ -1,5 +1,5 @@
 ---
-Title: NLP Project's Blog Post (by "Group TSS")
+Title: NLP Project's Blog Post, Part I (by "Group TSS")
 Date: 2023-04-14
 Category: Progress Report
 Tags: TSS
