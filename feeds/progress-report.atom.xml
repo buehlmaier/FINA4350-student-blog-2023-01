@@ -18,9 +18,10 @@
 &lt;span class="n"&gt;stopwords&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;english&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;p&gt;&lt;img alt="Bag-of-Words" src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/images/Group-Sibo-Post01_Head_BOW.png"&gt;&lt;/p&gt;
 &lt;h2&gt;April 4&lt;/h2&gt;
 &lt;p&gt;I download the same reports from 1994 to 1997. Three 10-K files (1994-1996) are downloaded on the &lt;a href="https://investors.coca-colacompany.com/filings-reports/annual-filings-10-k?page=4"&gt;company's website&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I downloaded financial statements data (including sales) on &lt;em&gt;Bloomberg&lt;/em&gt; from 1993 to 2022. There is no revenue for 2001Q4, so I substitute it with the average of 2001Q3 and 2002Q1.&lt;/p&gt;
+&lt;p&gt;I downloaded quarterly sales data on &lt;em&gt;Bloomberg&lt;/em&gt; from 1993 to 2022. There is no sales for 2001Q4, so I substitute it with the average of 2001Q3 and 2002Q1.&lt;/p&gt;
 &lt;h2&gt;April 13&lt;/h2&gt;
 &lt;p&gt;I use unsupervised learning to analyze BOW. I use &lt;strong&gt;k-means clustering&lt;/strong&gt; and &lt;strong&gt;hierarchical clustering&lt;/strong&gt; in &lt;code&gt;SKLearn&lt;/code&gt; package. There are 36 quarters in total. I try from 2 to 8 clusters. The outcomes are not desirable.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.cluster&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;KMeans&lt;/span&gt;
@@ -36,18 +37,19 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;April 17&lt;/h2&gt;
-&lt;p&gt;I use supervised learning to analyze BOW. I use &lt;strong&gt;Naïve Bayes&lt;/strong&gt;, &lt;strong&gt;logistic regression&lt;/strong&gt;, and &lt;strong&gt;Random Forest classifier&lt;/strong&gt;. I put 28 quarters (80%) in the training set and 8 quarters in the test set. I classify the outcome variable sales growth into 2 / 3 / 4 classes and compute the predictive accuracy correspondingly.&lt;/p&gt;
+&lt;p&gt;I use supervised learning to analyze BOW. I put 28 quarters (80%) in the training set and 8 quarters in the test set. I classify the outcome variable sales growth into 2 / 3 / 4 classes.  I use &lt;strong&gt;Naïve Bayes&lt;/strong&gt;, &lt;strong&gt;logistic regression&lt;/strong&gt;, and &lt;strong&gt;Random Forest classifier&lt;/strong&gt;. And I compute the predictive accuracy correspondingly.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Train-test split&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.model_selection&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;train_test_split&lt;/span&gt;
 &lt;span class="n"&gt;x_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;train_test_split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;test_size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;I also use &lt;strong&gt;linear regression&lt;/strong&gt; and &lt;strong&gt;Random Forest regressor&lt;/strong&gt; for the continuous outcome variable sales growth and compute the mean squared error (MSE) correspondingly.&lt;/p&gt;
+&lt;p&gt;I also use &lt;strong&gt;linear regression&lt;/strong&gt; and &lt;strong&gt;Random Forest regressor&lt;/strong&gt; for the continuous outcome variable sales growth and compute square root of mean squared error (RMSE) correspondingly.&lt;/p&gt;
 &lt;p&gt;I calculate the &lt;strong&gt;sentiment score&lt;/strong&gt; for each quarter using &lt;em&gt;Afinn&lt;/em&gt; lexicon. There is no significant relationship between sales growth and sentiment score.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;afinn&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Afinn&lt;/span&gt;
 &lt;span class="n"&gt;Afinn&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;score&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;love&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
+&lt;p&gt;&lt;img alt="Sentiment Analysis" src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/images/Group-Sibo-Post01_Sentiment_Analysis.png"&gt;&lt;/p&gt;
 &lt;p&gt;I use &lt;code&gt;NLTK&lt;/code&gt; package to stem and lemmatize after excluding stop words and before calculating BOW.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;nltk.stem&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;PorterStemmer&lt;/span&gt;
 &lt;span class="n"&gt;PorterStemmer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;lovely&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -56,7 +58,17 @@
 &lt;p&gt;At night, I start to make the first vision of presentation slides, and I finish on the morning of Apr 18.&lt;/p&gt;
 &lt;h2&gt;April 18&lt;/h2&gt;
 &lt;p&gt;I manually calculate &lt;em&gt;tf-idf&lt;/em&gt; using &lt;code&gt;Pandas&lt;/code&gt; on BOW. Then I input it into all models. There is no increase in performance. 2 references: &lt;a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf"&gt;Wikipedia&lt;/a&gt;, &lt;a href="https://baike.baidu.com/item/tf-idf/8816134"&gt;Baike&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;My teacher advises me to include more details in the slides. So I work on covering more intuition.&lt;/p&gt;</content><category term="Progress Report"></category><category term="Sibo"></category></entry><entry><title>NLP Project's Blog Post (by "Group TSS")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/nlp-projects-blog-post-by-group-tss.html" rel="alternate"></link><published>2023-04-14T00:00:00+08:00</published><updated>2023-04-14T00:00:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-14:/FINA4350-student-blog-2023-01/nlp-projects-blog-post-by-group-tss.html</id><summary type="html">&lt;p&gt;By Group "TSS"&lt;/p&gt;
+&lt;p&gt;My teacher advises me to include more details in the slides. So I work on covering more intuition.&lt;/p&gt;
+&lt;h2&gt;April 29&lt;/h2&gt;
+&lt;p&gt;After the presentation on Apr 24, my teacher advises me to look into a certain quarterly statement as a case study.&lt;/p&gt;
+&lt;p&gt;I select the quarter with the highest sales growth. I use my trained RF regressor model to predict its sales growth. I filter 10 most frequent words. I plot a word cloud.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;wordcloud&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;WordCloud&lt;/span&gt;
+&lt;span class="n"&gt;WordCloud&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;apple, banana, apple&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img alt="Word Cloud" src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/images/Group-Sibo-Post01_Word_Cloud_-_Highest_Sales.png"&gt;&lt;/p&gt;
+&lt;h2&gt;April 30&lt;/h2&gt;
+&lt;p&gt;For supervised learning, I add 2 models: &lt;strong&gt;XGBoost regressor&lt;/strong&gt; and &lt;strong&gt;XGBoost classifier&lt;/strong&gt;.&lt;/p&gt;</content><category term="Progress Report"></category><category term="Sibo"></category></entry><entry><title>NLP Project's Blog Post (by "Group TSS")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/nlp-projects-blog-post-by-group-tss.html" rel="alternate"></link><published>2023-04-14T00:00:00+08:00</published><updated>2023-04-14T00:00:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-14:/FINA4350-student-blog-2023-01/nlp-projects-blog-post-by-group-tss.html</id><summary type="html">&lt;p&gt;By Group "TSS"&lt;/p&gt;
 &lt;h1&gt;Microsofts' Sales Growth Forecast&lt;/h1&gt;
 &lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;In deciding our topic for this project, our goal was to focus on something that could have a useful and intuitive application in the context of finance and the investment scenario. Thinking about the main factors that influence stock investment decisions and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;By Group "TSS"&lt;/p&gt;
