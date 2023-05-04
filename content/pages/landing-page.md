@@ -27,6 +27,7 @@ Names of student groups (in order of sign-up):
   * Group Aixchange
   * Sibo
   * Group 2
+  * Group EvGPT
 
 The source code of this blog is available on
 [GitHub](https://github.com/buehlmaier/FINA4350-student-blog-2023-01).
