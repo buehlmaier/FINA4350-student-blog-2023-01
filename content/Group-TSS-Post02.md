@@ -11,7 +11,7 @@ By Group "TSS"
 
 ###1. Web Scraping
 
-As stated before, we used the App store and the Google Play store to obtain the online apps’ user comments data. However, we faced some issues with the app_store_scraper, the web scrapper platform for the App store; it only could fetch 400 entries or users’ comments even though there were millions of user’s comments in the App store for the Microsoft’s online apps used. Although we tried to solve this technical issue, it was still giving the same output. Thus, we decided to move forward with using only the Google Play store for the online apps’ reviews. We do not think that this had any negative impact on our model since Google Play store is more widely used than the App store and it contained a greater volume of reviews than the App store. Below is a sample code showing the volume of reviews obtained from the Google Play store.
+As stated before, we used the App store and the Google Play store to obtain the online apps’ user comments data. However, we faced some issues with the app_store_scraper, the web scrapper platform for the App store; it could only fetch 400 entries or users’ comments even though there were millions of user’s comments in the App store for Microsoft’s online apps used. Although we tried to solve this technical issue, it was still giving the same output. Thus, we decided to move forward with using the Google Play store only for the online apps’ reviews. We do not think that this had any negative impact on our model since Google Play store is more widely used than the App store and it contained a greater volume of reviews than the App store. Below is a sample code showing the volume of reviews obtained from the Google Play store.
 
 ```
 [{'name': 'outlook',
@@ -29,12 +29,12 @@ As stated before, we used the App store and the Google Play store to obtain the 
   449997                                      My favorite!!      5  2023    Q2
   449998                                            Perfect      5  2023    Q2
   449999  Microsoft Expectation is an amazing applicatio...      4  2023    Q2
-```
+  ```
 
   
-  ### 2. Sales and Scores data Correlation
+###2. Sales and Scores: Data Correlation
 
-  Our two data inputs for our NLP model were the quarterly sales figures from Microsoft for the last three years, and the online apps’ reviews for the most popular Microsoft’s online apps (Outlook, Authenticator, Microsoft’s Teams, and Microsoft’s 365). Our end goal was to correlate the scores obtained from the sentiment analysis model applied to the online app’s reviews with the quarterly sales figures, but as we moved forward in our model training, we realized that 1) the consumer sentiment on the online apps did not have such a strong effect on the sales projections, and 2) the sales figures did not match the frequency of the users’ comments (there were many instances of user’s comments and only 12 actual values for the sales figures). 
+  Our two data inputs for our NLP model were the quarterly sale figures from Microsoft for the last three years, and the online apps’ reviews for the most popular Microsoft’s online apps (Outlook, Authenticator, Microsoft’s Teams, and Microsoft’s 365). Our end goal was to correlate the scores obtained from the sentiment analysis model applied to the online app’s reviews with the quarterly sales figures, but as we moved forward in our model training, we realized that 1) the consumer sentiment on the online apps did not have such a strong effect on the sales projections, and 2) the sales figures did not match the frequency of the users’ comments (there were many instances of user’s comments and only 12 actual values for the sales figures). 
 
 Related to issue 1, it is important to mention that Microsoft’s online apps still had some correlation to sales figures, but not as much as we expected. What we did to address that was to analyze each online app individually to determine which one had the biggest correlation with sales. After doing that, we determined that Outlook online app was the one with the biggest correlation coefficient, which was 0.11. Below is some sample code of the Outlook correlation analysis.
 
@@ -93,3 +93,4 @@ Sample code of sales figures and scores values:
 
 ###Final Remarks
 We believe that the model could be greatly improved with future work that could address the issues we encountered with the data. For instance, a way our model could be more accurate is finding a dataset more continuous than quarterly sale figures to be able to match the frequency of user’s comments. Moreover, for our consumer sentiment analysis, we could look at other products offered by Microsoft and see if they have a stronger correlation to sales. Nonetheless, even though our model was not completely accurate in providing our sales prediction, it functioned as we trained it and it provided us with the sales growth projection for Q1 2023, which was our project’s end goal.
+
