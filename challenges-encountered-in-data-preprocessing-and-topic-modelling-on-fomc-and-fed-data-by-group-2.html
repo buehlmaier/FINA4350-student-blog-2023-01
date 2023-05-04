@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/css/custom.css" media="screen">
+
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+        <meta name="author" content="FINA4350 Students 2023" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="Group2, Progress Report, " />
+
+<meta property="og:title" content="Challenges encountered in Data Preprocessing and Topic Modelling on FOMC and FED data (by &#34;Group 2&#34;) "/>
+<meta property="og:url" content="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/challenges-encountered-in-data-preprocessing-and-topic-modelling-on-fomc-and-fed-data-by-group-2.html" />
+<meta property="og:description" content="By Group 2 Intro and Objectives The objective of our project is to predict the rate hike rate using official FED materials such as FOMC meeting minutes, FOMC statements, FED speeches and FED testimonies. As inflation remains elevated, the Fed raised the fed funds rate by 25bps to 4.75 …" />
+<meta property="og:site_name" content="FINA4350 Student Blog 2023" />
+<meta property="og:article:author" content="FINA4350 Students 2023" />
+<meta property="og:article:published_time" content="2023-04-25T10:00:00+08:00" />
+<meta name="twitter:title" content="Challenges encountered in Data Preprocessing and Topic Modelling on FOMC and FED data (by &#34;Group 2&#34;) ">
+<meta name="twitter:description" content="By Group 2 Intro and Objectives The objective of our project is to predict the rate hike rate using official FED materials such as FOMC meeting minutes, FOMC statements, FED speeches and FED testimonies. As inflation remains elevated, the Fed raised the fed funds rate by 25bps to 4.75 …">
+
+        <title>Challenges encountered in Data Preprocessing and Topic Modelling on FOMC and FED data (by &#34;Group 2&#34;)  · FINA4350 Student Blog 2023
+</title>
+        <link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="FINA4350 Student Blog 2023 - Full Atom Feed" />
+
+
+
+    </head>
+    <body>
+        <div id="content">
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/"><span class=site-name>FINA4350 Student Blog 2023</span></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right top-menu">
+                                <li >
+                                    <a href=
+                                       https://buehlmaier.github.io/FINA4350-student-blog-2023-01
+                                    >Home</a>
+                                </li>
+                                <li ><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/categories.html">Categories</a></li>
+                                <li ><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/tags.html">Tags</a></li>
+                                <li ><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/archives.html">Archives</a></li>
+                                <li><form class="navbar-search" action="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span10">
+<article itemscope>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+        <h1>
+            <a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/challenges-encountered-in-data-preprocessing-and-topic-modelling-on-fomc-and-fed-data-by-group-2.html">
+                Challenges encountered in Data Preprocessing and Topic Modelling on FOMC and FED data (by "Group 2")
+            </a>
+        </h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+            
+            <p>By Group 2</p>
+<h2>Intro and Objectives</h2>
+<p>The objective of our project is to predict the rate hike rate using official FED materials such as FOMC meeting minutes, FOMC statements, FED speeches and FED testimonies. As inflation remains elevated, the Fed raised the fed funds rate by 25bps to 4.75%-5% in March 2023, matching the February increase, and pushing borrowing costs to new highs since 2007. We decided on this topic as we think interest rate is imperative to every stakeholder in an economy. The general belief is that by increasing rates, borrowing cost rises and hinders the ability of consumers and businesses to obtain short-term credit. As investors ourselves, our group has decided to predict rate hike as the stock and bond market is very sensitive to interest rate and rate hike announcements. Furthermore, a higher interest rate following a rate hike announcement often causes rising dollars against foreign currencies.</p>
+<h2>Our difficulties and approaches to overcome it:</h2>
+<h4>Problem 1: Difficult to remove participants name in FOMC minutes</h4>
+<p>During the pre-processing stage of our data, we encountered difficulties when scrapping the FOMC minutes as the data is relatively unstructured. The coverage for the FOMC minutes were different across years, which made it even harder to standardize them to remove unrelated text before the data merging stage.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">def</span> <span class="nv">removeUnrelatedText</span><span class="ss">(</span><span class="nv">x</span><span class="ss">)</span>:
+    # <span class="nv">remove</span> <span class="nv">words</span> <span class="nv">before</span> <span class="nv">the</span> <span class="nv">line</span>
+    <span class="k">if</span> <span class="nv">x</span>.<span class="nv">find</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">By unanimous vote, the minutes of the meeting of the Federal Open Market Committee held on</span><span class="s1">&#39;</span><span class="ss">)</span><span class="o">&gt;</span><span class="mi">0</span>:
+        <span class="nv">x</span> <span class="o">=</span> <span class="nv">x</span>.<span class="nv">split</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">By unanimous vote, the minutes of the meeting of the Federal Open Market Committee held on</span><span class="s1">&#39;</span><span class="ss">)</span>
+        <span class="k">if</span> <span class="nv">len</span><span class="ss">(</span><span class="nv">x</span><span class="ss">)</span><span class="o">&gt;=</span><span class="mi">1</span>:
+            <span class="nv">x</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s"> </span><span class="s2">&quot;</span>.<span class="nv">join</span><span class="ss">(</span><span class="nv">x</span>[<span class="mi">1</span>:]<span class="ss">)</span>
+            <span class="nv">x</span> <span class="o">=</span> <span class="nv">x</span>[<span class="nv">x</span>.<span class="nv">find</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">were approved.</span><span class="s1">&#39;</span><span class="ss">)</span><span class="o">+</span><span class="mi">14</span>:]
+            <span class="k">return</span> <span class="nv">x</span>
+    <span class="k">else</span>:
+        <span class="k">return</span> <span class="nv">x</span>
+</code></pre></div>
+
+<p>Luckily, we noticed a pattern across all years of FOMC minutes. The majority of the minutes has the line “By unanimous vote, …” and before this line shows the unwanted data such as the participants of the FOMC meetings. This data is considered useless for our data analysis part and has to be removed before feeding into our machine learning model. By using the .split method, unwanted texts before the line “By unanimous vote,…” can be successfully removed. Hence, we successfully trimmed out a large chunk of text that is unwanted.
+  Through this process, we’ve learnt the importance of finding a systematic way to identify patterns across different datasets in the data pre-processing stage. That is one of the biggest takeaways we’ve learnt in the process.</p>
+<h4>Problem 2: Difficulty in reading large csv files</h4>
+<p>We encountered a problem that our program could not read large csv files compiled from the collected data. It turns out the Python standard library CSV module enforces a default field size limit on columns, and anything with more than 128KB of text in a column will raise an error.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">maxInt</span> <span class="o">=</span> <span class="nv">sys</span>.<span class="nv">maxsize</span>
+<span class="k">while</span> <span class="nv">True</span>:
+    # <span class="nv">decrease</span> <span class="nv">the</span> <span class="nv">maxInt</span> <span class="nv">value</span> <span class="nv">by</span> <span class="nv">factor</span> <span class="mi">10</span>
+    # <span class="nv">as</span> <span class="nv">long</span> <span class="nv">as</span> <span class="nv">the</span> <span class="nv">OverflowError</span> <span class="nv">occurs</span>, <span class="nv">we</span> <span class="nv">catch</span> <span class="nv">the</span> <span class="nv">error</span>
+    <span class="nv">try</span>:
+        <span class="nv">csv</span>.<span class="nv">field_size_limit</span><span class="ss">(</span><span class="nv">maxInt</span><span class="ss">)</span>
+        <span class="k">break</span>
+    <span class="nv">except</span> <span class="nv">OverflowError</span>:
+        <span class="nv">maxInt</span> <span class="o">=</span> <span class="nv">int</span><span class="ss">(</span><span class="nv">maxInt</span><span class="o">/</span><span class="mi">10</span><span class="ss">)</span>
+<span class="nv">df</span> <span class="o">=</span> <span class="nv">pd</span>.<span class="nv">read_csv</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">FOMC meeting minutes.csv</span><span class="s1">&#39;</span>,<span class="nv">engine</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">python</span><span class="s2">&quot;</span>,<span class="nv">converters</span><span class="o">=</span>{<span class="s2">&quot;</span><span class="s">index</span><span class="s2">&quot;</span>:<span class="nv">pd</span>.<span class="nv">to_datetime</span>,<span class="s2">&quot;</span><span class="s">Federal_Reserve_Mins</span><span class="s2">&quot;</span>:<span class="nv">str</span>}<span class="ss">)</span>
+</code></pre></div>
+
+<p>Our group then standardized our approach to this problem and modify this error by using the csv.field_size_limit(new_limit) function. However, we then faced with Overflow Error in some of our groupmate's computer. To solve this, we added try except function to makesure the maxInt is under the limit and will not cause Overflow error.</p>
+<p>Moveover, we added converters to our dataframe. It is beacuse we found that when we save a dataframe to csv, the date field will become string.</p>
+<h2>Topic Modelling: Keeping our input textual data free from excessive and unwanted information</h2>
+<p>One of the major concerns for us is to minimize the amount of unrelated textual data into our model. We encountered some difficulties by removing unncecessary words from FOMC meeting minutes and speeches, as we want to be close to remove every single word that is unrelevant. When we are preprocessing the data from FED speeches, we found out that some of the speeches are unrelated to rate hikes. Hence, after thorough consideration, we decided to do topic modelling to improve the quality of our input data.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">df</span> <span class="o">=</span> <span class="nv">pd</span>.<span class="nv">read_csv</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">speeches_preprocessed.csv</span><span class="s2">&quot;</span>,<span class="nv">engine</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">python</span><span class="s1">&#39;</span>,<span class="nv">converters</span><span class="o">=</span>{<span class="s2">&quot;</span><span class="s">Date</span><span class="s2">&quot;</span>:<span class="nv">pd</span>.<span class="nv">to_datetime</span>,<span class="s2">&quot;</span><span class="s">Content</span><span class="s2">&quot;</span>:<span class="nv">str</span>}<span class="ss">)</span>
+
+#<span class="nv">vectorize</span> <span class="nv">the</span> <span class="nv">content</span> <span class="k">for</span> <span class="nv">topic</span> <span class="nv">clustering</span>
+<span class="nv">vectorizer</span> <span class="o">=</span> <span class="nv">TfidfVectorizer</span><span class="ss">(</span><span class="nv">stop_words</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">english</span><span class="s1">&#39;</span>,\
+                            <span class="nv">max_features</span><span class="o">=</span> <span class="mi">1000</span>,
+                            <span class="nv">max_df</span> <span class="o">=</span> <span class="mi">0</span>.<span class="mi">5</span>, 
+                            <span class="nv">smooth_idf</span><span class="o">=</span><span class="nv">True</span><span class="ss">)</span>
+
+<span class="nv">X</span> <span class="o">=</span> <span class="nv">vectorizer</span>.<span class="nv">fit_transform</span><span class="ss">(</span><span class="nv">df</span>[<span class="s1">&#39;</span><span class="s">Content</span><span class="s1">&#39;</span>]<span class="ss">)</span>
+</code></pre></div>
+
+<p>We first applied TF-IDF technique, which is a form of text vectorization depending on the term frequency and document frequency of the term. It uses a special technique for converting text into finitie length vectors. Rather than weighting on the importance of words, TF-IDF is a special form of BoW model to provide insights on what is considered more relevant and less relevant words in a document. We therefore leveraged this technique before doing topic clustering.</p>
+<div class="highlight"><pre><span></span><code> # <span class="nv">fit</span> <span class="nv">SVD</span> <span class="nv">model</span> <span class="k">for</span> <span class="nv">topic</span> <span class="nv">clustering</span>
+<span class="nv">svd_model</span> <span class="o">=</span> <span class="nv">TruncatedSVD</span><span class="ss">(</span><span class="nv">n_components</span><span class="o">=</span><span class="mi">20</span>, <span class="nv">algorithm</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">randomized</span><span class="s1">&#39;</span>, <span class="nv">n_iter</span><span class="o">=</span><span class="mi">100</span>, <span class="nv">random_state</span><span class="o">=</span><span class="mi">122</span><span class="ss">)</span>
+<span class="nv">lsd</span> <span class="o">=</span> <span class="nv">svd_model</span>.<span class="nv">fit_transform</span><span class="ss">(</span><span class="nv">X</span><span class="ss">)</span>
+
+<span class="nv">terms</span> <span class="o">=</span> <span class="nv">vectorizer</span>.<span class="nv">get_feature_names_out</span><span class="ss">()</span>
+</code></pre></div>
+
+<p>Afterwards, we used Truncated SVD, which is a technique for dimension reduction, for topic modelling. We applied Truncated SVD on TF-TDF transformed data to cluster the speeches into 20 cluster groups. Each speech in the cluster groups will have similar topics. </p>
+<div class="highlight"><pre><span></span><code><span class="c1">#print out terms to check which topics are relevant</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">comp</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">enumerate</span><span class="p">(</span><span class="n">svd_model</span><span class="o">.</span><span class="n">components_</span><span class="p">):</span><span class="w"></span>
+<span class="w">    </span><span class="n">terms_comp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zip</span><span class="p">(</span><span class="n">terms</span><span class="p">,</span><span class="w"> </span><span class="n">comp</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">sorted_terms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sorted</span><span class="p">(</span><span class="n">terms_comp</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="o">=</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">reverse</span><span class="o">=</span><span class="n">True</span><span class="p">)[:</span><span class="mi">15</span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Topic &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;: &quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">sorted_terms</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"></span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<p>We then output the top 15 relevant words (features) of each topic. For example, topics 0 to 3:</p>
+<p><img alt="Picture showing different Topics" src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/images/Group-2-Post01_Topics.png"></p>
+<p>We can see that topic 0 and 1 are most relevant to rate hike prediction and topics 2 and 3 are less. Thus, we only keep speeches of topics 0 and 1 for machine learning.</p>
+
+
+             
+ 
+            
+            
+            
+
+
+
+
+
+
+
+            <hr/>
+        </div>
+        <section id="article-sidebar" class="span2">
+            <h4>Published</h4>
+            <time itemprop="dateCreated" datetime="2023-04-25T10:00:00+08:00">Tue 25 April 2023</time>
+            <h4>Category</h4>
+            <a class="category-link" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/categories.html#progress-report-ref">Progress Report</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/tags.html#group2-ref">Group2
+                    <span class="superscript">2</span>
+</a></li>
+            </ul>
+<h4>Contact</h4>
+<div id="sidebar-social-link">
+    <a href="https://github.com/buehlmaier/FINA4350-student-blog-2023-01" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1B1817"/><path fill="#fff" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+    </a>
+</div>
+            
+
+
+
+
+
+            
+
+
+
+
+
+        </section>
+</div>
+</article>
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>                    </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+        </div>
+<footer>
+
+
+
+
+    <div id="fpowered">
+        Powered by: <a href="http://getpelican.com/" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>
+        Theme: <a href="https://elegant.oncrashreboot.com/" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>
+    </div>
+</footer>            <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/js/elegant.prod.9e9d5ce754.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    <script>
+    (function () {
+        if (window.location.hash.match(/^#comment-\d+$/)) {
+            $('#comment_thread').collapse('show');
+        }
+    })();
+    window.onhashchange=function(){
+        if (window.location.hash.match(/^#comment-\d+$/))
+            window.location.reload(true);
+    }
+    $('#comment_thread').on('shown', function () {
+        var link = document.getElementById('comment-accordion-toggle');
+        var old_innerHTML = link.innerHTML;
+        $(link).fadeOut(200, function() {
+            $(this).text('Click here to hide comments').fadeIn(200);
+        });
+        $('#comment_thread').on('hidden', function () {
+            $(link).fadeOut(200, function() {
+                $(this).text(old_innerHTML).fadeIn(200);
+            });
+        })
+    })
+</script>
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+        License : MIT -->
+</html>
