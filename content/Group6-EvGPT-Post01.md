@@ -2,7 +2,7 @@
 Title: Bag Of words (by "Group 6")
 Date: 2023-02-05 12:12
 Category: Progress Report
-Tags: Group 6 EveGPT
+Tags: Group 6 EvGPT
 ---
 
 
