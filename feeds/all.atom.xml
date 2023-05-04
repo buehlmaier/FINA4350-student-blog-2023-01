@@ -102,7 +102,120 @@ We could have considered expanding on our testing data to include other financia
 The project design would be improved if we had a better financial understanding of bonds and the data commonly used to measure credit health deterioration.&lt;/p&gt;
 &lt;p&gt;For a comprehensive write-up of our results, please refer to our group report. To access the entire project code files, please visit our GitHub page.&lt;/p&gt;
 &lt;p&gt;This is the final blog for our project. We have tried to illustrate the challenges we faced and the changes we made throughout the project. \
-We hope there were some useful insights for anyone reading!&lt;/p&gt;</content><category term="Progress Report"></category><category term="Group8"></category></entry><entry><title>Our Group Work Process: Using NLP to Predict Credit Downgrades, Part II (by "Group 8")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/our-group-work-process-using-nlp-to-predict-credit-downgrades-part-ii-by-group-8.html" rel="alternate"></link><published>2023-04-30T21:09:00+08:00</published><updated>2023-04-30T21:09:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-30:/FINA4350-student-blog-2023-01/our-group-work-process-using-nlp-to-predict-credit-downgrades-part-ii-by-group-8.html</id><summary type="html">&lt;h1&gt;Our Group Work Process: Using NLP to Predict Credit Downgrades&lt;/h1&gt;
+We hope there were some useful insights for anyone reading!&lt;/p&gt;</content><category term="Progress Report"></category><category term="Group8"></category></entry><entry><title>Project Diary II (by "Sibo")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/project-diary-ii-by-sibo.html" rel="alternate"></link><published>2023-05-03T11:17:00+08:00</published><updated>2023-05-03T11:17:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-05-03:/FINA4350-student-blog-2023-01/project-diary-ii-by-sibo.html</id><summary type="html">&lt;h2&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;Sales is one key financial indicator for companies and investors. Financial statements are the most authoritative and influential documents for companies. Natural language processing (NLP) and machine learning are two powerful tools to analyze textual data. Therefore, I want to estimate and predict a company’s sales growth using …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;Sales is one key financial indicator for companies and investors. Financial statements are the most authoritative and influential documents for companies. Natural language processing (NLP) and machine learning are two powerful tools to analyze textual data. Therefore, I want to estimate and predict a company’s sales growth using NLP and machine learning to analyze its financial statements.&lt;/p&gt;
+&lt;h2&gt;Company Selection: Coca-Cola&lt;/h2&gt;
+&lt;p&gt;I choose &lt;em&gt;Coca-Cola Co&lt;/em&gt; (KO) for 2 main reasons. First, it is a worldwide food company listed on the &lt;em&gt;Dow Jones Industrial Average&lt;/em&gt;. Second, its &lt;a href="https://www.google.com/finance/quote/KO:NYSE?window=MAX"&gt;stock price&lt;/a&gt; fluctuates, so it is easier to estimate the impact of financial statements on different growing patterns.&lt;/p&gt;
+&lt;h2&gt;Data Collection&lt;/h2&gt;
+&lt;p&gt;The time span is 1994 to 2002. I download quarterly reports (10-Q &amp;amp; 10-K) on &lt;a href="https://www.sec.gov/edgar/browse/?CIK=21344&amp;amp;owner=exclude"&gt;SEC EDGAR&lt;/a&gt; and &lt;a href="https://investors.coca-colacompany.com/filings-reports/annual-filings-10-k?page=4"&gt;company's website&lt;/a&gt;, and save them as “.txt” files. I download quarterly sales data on &lt;em&gt;Bloomberg&lt;/em&gt;. There is no sales for 2001Q4, so I substitute it with the average of 2001Q3 and 2002Q1.&lt;/p&gt;
+&lt;h2&gt;NLP Preprocessing&lt;/h2&gt;
+&lt;p&gt;As original financial statements are not appropriate for direct analysis, I have to conduct some NLP preprocessing. I use &lt;code&gt;NLTK&lt;/code&gt; package.&lt;/p&gt;
+&lt;p&gt;First, I change all letters to lowercase, because most small letters have the same meaning as capital letters.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="s1"&gt;&amp;#39;101 Acceptable in _Mtd&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lower&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Expected output: &amp;#39;101 acceptable in _mtd&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Second, I split (tokenize) whole paragraphs into words.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;nltk.tokenize&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;word_tokenize&lt;/span&gt;
+&lt;span class="n"&gt;word_tokenize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;101 acceptable in _mtd&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Expected output: [&amp;#39;101&amp;#39;, &amp;#39;acceptable&amp;#39;, &amp;#39;in&amp;#39;, &amp;#39;_mtd&amp;#39;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Third, I remove words starting with a number or a special character using regular expression, because they often do not carry useful information in these financial statements.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;re&lt;/span&gt;
+&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;101&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;acceptable&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;in&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;_mtd&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;findall&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;(^[a-z].*)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="p"&gt;[]:&lt;/span&gt;
+        &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;remove&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Expected output: [&amp;#39;acceptable&amp;#39;, &amp;#39;in&amp;#39;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Fourth, I remove stop words (such as “the”, “and”, “in”) because they do not carry useful information.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;nltk.corpus&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;stopwords&lt;/span&gt;
+&lt;span class="n"&gt;stopwords&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;stopwords&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;english&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;acceptable&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;in&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;stopwords&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;remove&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Expected output: [&amp;#39;acceptable&amp;#39;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Fifth, many words in English are derived from a root word (e.g., “normality” is derived from “norm”). For easier analysis, I convert (stem and lemmatize) all derived words into their root forms.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;nltk.stem&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;PorterStemmer&lt;/span&gt;
+&lt;span class="n"&gt;PorterStemmer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;acceptable&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Expected output: &amp;#39;accept&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I use &lt;code&gt;Pandas&lt;/code&gt; package to merge data frames, and use &lt;code&gt;groupby&lt;/code&gt; and &lt;code&gt;count&lt;/code&gt; to count the number of occurrences of each word, which is also called Bag-of-Words (BOW).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Bag-of-Words" src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/images/Group-Sibo-Post01_Head_BOW.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Machine learning on BOW&lt;/h2&gt;
+&lt;p&gt;For supervised learning, I use BOW to estimate and predict sales growth. I put 28 quarters (80%) in the training set and 8 quarters in the test set.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Train-test split&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.model_selection&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;train_test_split&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reshape&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;x_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;train_test_split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;test_size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I use 3 regression models: linear regression, random forest regressor, and XGBoost regressor; then I compute square root of mean squared error (RMSE) for each model. RF classifier model predicts most accurately.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.linear_model&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;LinearRegression&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;metrics&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Fit linear regression model with training data&lt;/span&gt;
+&lt;span class="n"&gt;lin&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;LinearRegression&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x_train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_train&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Use the fitted model to predict test data&lt;/span&gt;
+&lt;span class="n"&gt;lin_pred&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x_test&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Mean squared error between predictions and actual test values&lt;/span&gt;
+&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean_squared_error&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lin_pred&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# The code for other models is very similar, can check sklearn documentations for more details&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I classify the continuous outcome variable (sales growth) into 2 / 3 / 4 classes. I use 4 classification models: Naïve Bayes, logistic regression, random forest classifier, and XGBoost classifier; then I compute the predictive accuracy for each model. Logistic regression model predicts most accurately.&lt;/p&gt;
+&lt;p&gt;I also use unsupervised learning to analyze BOW. I use 2 models: k-means clustering and hierarchical clustering. I cluster financial statements of all 36 quarters into 2, 3, …, 8 clusters, and evaluate the similarity of sales growth within each cluster. The results are not desirable.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.cluster&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;KMeans&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Fit k-means model&lt;/span&gt;
+&lt;span class="n"&gt;k_clust&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;KMeans&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_clusters&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit_predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Visualize the relationship&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;scatter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;k_clust&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;k_clust&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Sentiment analysis&lt;/h2&gt;
+&lt;p&gt;The rationale of sentiment analysis is simple. In &lt;em&gt;Afinn&lt;/em&gt; lexicon, positive words have higher sentiment scores.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;afinn&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Afinn&lt;/span&gt;
+&lt;span class="n"&gt;Afinn&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;score&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;love&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# 3&lt;/span&gt;
+&lt;span class="n"&gt;Afinn&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;score&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hate&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# -3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I multiply the sentiment score of each word by its count (which is BOW), then sum up all multiplications in one document to get one sentiment score for each quarter. There is no significant relationship between sales growth and sentiment score.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Sentiment Analysis" src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/images/Group-Sibo-Post01_Sentiment_Analysis.png"&gt;&lt;/p&gt;
+&lt;h2&gt;tf-idf&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;tf-idf&lt;/em&gt; (term frequency–inverse document frequency), similar to BOW, measures how important a word is in a collection of documents. I manually calculate it using &lt;code&gt;Pandas&lt;/code&gt; on BOW. Then I input it into all models. There is no increase in performance. 2 references: &lt;a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf"&gt;Wikipedia&lt;/a&gt;, &lt;a href="https://baike.baidu.com/item/tf-idf/8816134"&gt;Baike&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Case study: Highest sales growth&lt;/h2&gt;
+&lt;p&gt;To understand some characteristics of an individual quarterly statement, I investigate the quarter with the highest sales growth. The highest sales growth is 31.6% in 2002Q2. Since random forest regressor is the most accurate model previously, I use it to predict this sales growth, and the result is 27.8%.&lt;/p&gt;
+&lt;p&gt;The 10 most frequent words in this statement are “compani", “million”, “oper”, “incom", “net”, “month”, “share”, “account”, “six”, “consolid”. Several points are noticeable here. First, words are being stemmed and lemmatized, so they are not in normal formats. Second, financial statements have certain templates, so frequent words in this statement may also appear frequently in other statements. Third, frequent words are closely related to business operations, so they may not carry useful information in specific situations.&lt;/p&gt;
+&lt;p&gt;I create a word cloud to better visualize the relative frequency of words.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;wordcloud&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;WordCloud&lt;/span&gt;
+&lt;span class="n"&gt;WordCloud&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;apple, banana, apple&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img alt="Word Cloud" src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/images/Group-Sibo-Post01_Word_Cloud_-_Highest_Sales.png"&gt;&lt;/p&gt;</content><category term="Progress Report"></category><category term="Sibo"></category></entry><entry><title>Our Group Work Process: Using NLP to Predict Credit Downgrades, Part II (by "Group 8")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/our-group-work-process-using-nlp-to-predict-credit-downgrades-part-ii-by-group-8.html" rel="alternate"></link><published>2023-04-30T21:09:00+08:00</published><updated>2023-04-30T21:09:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-30:/FINA4350-student-blog-2023-01/our-group-work-process-using-nlp-to-predict-credit-downgrades-part-ii-by-group-8.html</id><summary type="html">&lt;h1&gt;Our Group Work Process: Using NLP to Predict Credit Downgrades&lt;/h1&gt;
 &lt;p&gt;After our midterm progress report, we have made significant strides in completing the scraping of reports from credit rating agencies. We are also in the process of preprocessing and cleaning the data so that it can be tokenized and analyzed …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Our Group Work Process: Using NLP to Predict Credit Downgrades&lt;/h1&gt;
 &lt;p&gt;After our midterm progress report, we have made significant strides in completing the scraping of reports from credit rating agencies. We are also in the process of preprocessing and cleaning the data so that it can be tokenized and analyzed. We will then analyze the data using two approaches 1. Human Approach (we create a score) 2. Machine learning model using unsupervised learning for less human bias (clustering)&lt;/p&gt;
 &lt;ol&gt;
