@@ -19,12 +19,12 @@
 
 <meta property="og:title" content="Our Group Work Process: Using NLP to Predict Credit Downgrades, Part II (by &#34;Group 8&#34;) "/>
 <meta property="og:url" content="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/our-group-work-process-using-nlp-to-predict-credit-downgrades-part-ii-by-group-8.html" />
-<meta property="og:description" content="After our midterm progress report, we have made signiifcant strides in completing the scraping of reports from credit rating agencies. We are also in the process of preprocessing and cleaning the data so that it can be tokenized and analyzed. We will then analyze the data using two approaches 1 …" />
+<meta property="og:description" content="Our Group Work Process: Using NLP to Predict Credit Downgrades After our midterm progress report, we have made significant strides in completing the scraping of reports from credit rating agencies. We are also in the process of preprocessing and cleaning the data so that it can be tokenized and analyzed …" />
 <meta property="og:site_name" content="FINA4350 Student Blog 2023" />
 <meta property="og:article:author" content="FINA4350 Students 2023" />
 <meta property="og:article:published_time" content="2023-04-30T21:09:00+08:00" />
 <meta name="twitter:title" content="Our Group Work Process: Using NLP to Predict Credit Downgrades, Part II (by &#34;Group 8&#34;) ">
-<meta name="twitter:description" content="After our midterm progress report, we have made signiifcant strides in completing the scraping of reports from credit rating agencies. We are also in the process of preprocessing and cleaning the data so that it can be tokenized and analyzed. We will then analyze the data using two approaches 1 …">
+<meta name="twitter:description" content="Our Group Work Process: Using NLP to Predict Credit Downgrades After our midterm progress report, we have made significant strides in completing the scraping of reports from credit rating agencies. We are also in the process of preprocessing and cleaning the data so that it can be tokenized and analyzed …">
 
         <title>Our Group Work Process: Using NLP to Predict Credit Downgrades, Part II (by &#34;Group 8&#34;)  · FINA4350 Student Blog 2023
 </title>
@@ -78,11 +78,13 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
             
-            <p>After our midterm progress report, we have made signiifcant strides in completing the scraping of reports from credit rating agencies. We are also in the process of preprocessing and cleaning the data so that it can be tokenized and analyzed. We will then analyze the data using two approaches 1. Human Approach (we create a score) 2. Machine learning model using unsupervised learning for less human bias (clustering)</p>
+            <h1>Our Group Work Process: Using NLP to Predict Credit Downgrades</h1>
+<p>After our midterm progress report, we have made significant strides in completing the scraping of reports from credit rating agencies. We are also in the process of preprocessing and cleaning the data so that it can be tokenized and analyzed. We will then analyze the data using two approaches 1. Human Approach (we create a score) 2. Machine learning model using unsupervised learning for less human bias (clustering)</p>
 <ol>
-<li><strong>Webscaping</strong>: The main bottleneck in this stage was adjusting the code to account for each stage of the login page loading, along with pop-ups such as requests for cookies or terms and conditions. From a technical perspective, there was lots of Javascript which meant we had to rely on Selenium to webscrape. It was a little difficult to use Selenium at first, especially when Moody (one of the rating agencies) changed their website format as we finished the first iterataion of the code. This meant we had to recode the scraping process.</li>
+<li><strong>Webscaping</strong>: The main bottleneck in this stage was adjusting the code to account for each stage of the login page loading, along with pop-ups such as requests for cookies or terms and conditions. From a technical perspective, there was lots of Javascript which meant we had to rely on Selenium to webscrape. It was a little difficult to use Selenium at first, especially when Moody (one of the rating agencies) changed their website format as we finished the first iteration of the code. This meant we had to recode the scraping process.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="c1"># allow JS/Ajax to load</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1">#webscraping (code can be reproduced using file moodyScrape.py)</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># allow JS/Ajax to load</span><span class="w"></span>
 <span class="w">    </span><span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;//form/div/div/div/input&#39;</span><span class="p">)))</span><span class="w"></span>
 
 <span class="w">    </span><span class="c1">#remove login pop-up</span><span class="w"></span>
@@ -105,35 +107,34 @@
 
 <ol>
 <li>
-<p><strong>Preprocessing of Data</strong>: In terms of preprocessing of data, we had to limit the scope of text scraping on the website to limit the text corpus. This meant we had to identify specific HTML elements we wanted to scrape, making the short walk through on HTML covered in class very useful for our project. In terms of preprocessing techniques, we used apha-numeric only, along with lemmitzatio. We still need to get rid of stop words and manual filtering of irrelvant words. Still some ways to go.</p>
+<p><strong>Preprocessing of Data</strong>: In terms of preprocessing of data, we had to limit the scope of text scraping on the website to limit the text corpus. This meant we had to identify specific HTML elements we wanted to scrape, making the short walk-through on HTML covered in class very useful for our project. In terms of preprocessing techniques, we used aphanumeric only, along with lemmitization. We still need to get rid of stop words and manual filtering of irrelvant words. Still some ways to go.</p>
 </li>
 <li>
 <p><strong>Tokenization</strong>: Quite a smooth process, we used NLTK only.</p>
 </li>
 </ol>
-<p>``` #tokenization and preprocessing
-wnl = WordNetLemmatizer()
-    arr = list([w for w in word_tokenize(text.lower()) if w.isalpha() \
-                and len(w) &gt; 2 and not w in set(stopwords.words('english'))])</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="nv">tk</span> <span class="nv">in</span> <span class="nv">arr</span>:
-    <span class="k">if</span> <span class="nv">tk</span> <span class="nv">not</span> <span class="nv">in</span> <span class="nv">existing_words</span> <span class="nv">or</span> <span class="nv">tk</span> <span class="nv">not</span> <span class="nv">in</span> <span class="nv">special_words</span>:
-            <span class="k">if</span> <span class="nv">tk</span> <span class="nv">in</span> <span class="nv">set</span><span class="ss">(</span><span class="nv">words</span>.<span class="nv">words</span><span class="ss">())</span>:
-                <span class="nv">stemmed_arr</span>.<span class="nv">append</span><span class="ss">(</span><span class="nv">wnl</span>.<span class="nv">lemmatize</span><span class="ss">(</span><span class="nv">tk</span><span class="ss">))</span>
-                <span class="nv">existing_words</span>.<span class="nv">add</span><span class="ss">(</span><span class="nv">tk</span><span class="ss">)</span>
-    <span class="k">else</span>:
-        <span class="nv">stemmed_arr</span>.<span class="nv">append</span><span class="ss">(</span><span class="nv">wnl</span>.<span class="nv">lemmatize</span><span class="ss">(</span><span class="nv">tk</span><span class="ss">))</span>
+<div class="highlight"><pre><span></span><code>#<span class="nv">Preprocessing</span> <span class="ss">(</span><span class="nv">code</span> <span class="nv">can</span> <span class="nv">be</span> <span class="nv">reproduced</span> <span class="nv">using</span> <span class="nv">file</span> <span class="nv">processtext</span>.<span class="nv">py</span><span class="ss">)</span>
+
+<span class="nv">def</span> <span class="nv">processtext</span><span class="ss">(</span><span class="nv">text</span><span class="ss">)</span>:
+
+    # <span class="nv">tokenization</span> <span class="nv">and</span> <span class="nv">pre</span><span class="o">-</span><span class="nv">processing</span>
+    <span class="nv">wnl</span> <span class="o">=</span> <span class="nv">WordNetLemmatizer</span><span class="ss">()</span>
+    <span class="nv">arr</span> <span class="o">=</span> <span class="nv">list</span><span class="ss">(</span>[<span class="nv">w</span> <span class="k">for</span> <span class="nv">w</span> <span class="nv">in</span> <span class="nv">word_tokenize</span><span class="ss">(</span><span class="nv">text</span>.<span class="nv">lower</span><span class="ss">())</span> <span class="k">if</span> <span class="nv">w</span>.<span class="nv">isalpha</span><span class="ss">()</span>]<span class="ss">)</span>
+    <span class="nv">stemmed_arr</span> <span class="o">=</span> [<span class="nv">wnl</span>.<span class="nv">lemmatize</span><span class="ss">(</span><span class="nv">word</span><span class="ss">)</span> <span class="k">for</span> <span class="nv">word</span> <span class="nv">in</span> <span class="nv">arr</span> <span class="k">if</span> <span class="nv">not</span> <span class="nv">word</span> <span class="nv">in</span> <span class="nv">set</span><span class="ss">(</span><span class="nv">stopwords</span>.<span class="nv">words</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">english</span><span class="s1">&#39;</span><span class="ss">))</span>]
+    <span class="nv">print</span><span class="ss">(</span><span class="nv">stemmed_arr</span><span class="ss">)</span>
+
+    <span class="k">return</span> <span class="nv">stemmed_arr</span>
 </code></pre></div>
 
-<p>```</p>
 <ol>
 <li>
-<p><strong>Analysis</strong>: At first, we were a little confused on how we can conduct the quantitative analysis using the Bag of Words method. Learning of sentimentality in the lectures, we learnt we could apply that concept to generate statistical probabilities (a score from -1 to 1). We can also combine this with frequency to create a score. However, there is bound to be errors as the context of words may be incorrectly interpreted. There was less issue with the Machine Learning model.</p>
+<p><strong>Analysis</strong>: At first, we were a little confused on how we can conduct the quantitative analysis based on the Bag of Words method. During the lectures, we learned that we could apply the concept of sentiment analysis to generate statistical probabilities, which we can then combine with frequency to create a score (a score from -1 to 1). We can also combine this with frequency to create a score. However, there is a risk of errors since the context of words may be incorrectly interpreted. We encountered fewer issues with the machine learning model.</p>
 </li>
 <li>
-<p><strong>Implementation</strong>: We have several initial ideas on how we can implement our analysis on a larger set of data. One idea is that we could use the model from downgrade reports to look at the sentiment on earnings transcripts, but in theory it should work for any textual data that is related to the company. It is important we have a way to adjust to each type of text as the code in webscraping is quite specific to the medium of text.</p>
+<p><strong>Implementation</strong>: We have several initial ideas on how we can implement our analysis on a larger dataset. One idea is that we could use the model from downgrade reports to look at the sentiment on earnings transcripts, but in theory it should work for any textual data that is related to the company. It is important we have a way to adjust to each type of text as the code in webscraping is quite specific to the type of text.</p>
 </li>
 <li>
-<p><strong>Forseeable Limitations</strong>: The code will likley run slow. The entire project also relies on the BoW from Moodys only, as we struggled to scrape from S&amp;P and Fitch. The analysis can also only be applied to the China Real Estate market; we are unsure whether it would work for other industries, or even the RE market in other regions. The amount of manual coding word needed to tweak the scraping parameters make our work very unscalable. Our scraping is also prone to errors, and even the small sample size (n=~140) is much smaller than typical studies that have thousands of texts.</p>
+<p><strong>Forseeable Limitations</strong>: The code will likely run slow. The entire project also relies on the BoW from Moodys only, as we struggled to scrape from S&amp;P and Fitch. The analysis can also only be applied to the China Real Estate market; we are unsure whether it would work for other industries, or even the RE market in other regions. The amount of manual coding work needed to tweak the scraping parameters make our work very unscalable. Our scraping process is also prone to errors, and even with a sample size of only ~140 texts, our dataset is much smaller than typical studies that analyze thousands of texts."</p>
 </li>
 </ol>
 <p>We are excited to wrap up the project and submit our final report.</p>
