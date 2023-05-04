@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/css/custom.css" media="screen">
+
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+        <meta name="author" content="FINA4350 Students 2023" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="Group8, Progress Report, " />
+
+<meta property="og:title" content="Our Group Work Process: Using NLP to Predict Credit Downgrades, Part III (by &#34;Group 8&#34;) "/>
+<meta property="og:url" content="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/our-group-work-process-using-nlp-to-predict-credit-downgrades-part-iii-by-group-8.html" />
+<meta property="og:description" content="Our Final Blog: Using NLP to Predict Credit Downgrades After our second blog, we made significant changes to the analysis of our tokenized words. \ We have not made any changes to the initial stages (webscraping, preprocessing, tokenization). Analysis: We have decided to change our analysis of the training data into …" />
+<meta property="og:site_name" content="FINA4350 Student Blog 2023" />
+<meta property="og:article:author" content="FINA4350 Students 2023" />
+<meta property="og:article:published_time" content="2023-05-04T21:09:00+08:00" />
+<meta name="twitter:title" content="Our Group Work Process: Using NLP to Predict Credit Downgrades, Part III (by &#34;Group 8&#34;) ">
+<meta name="twitter:description" content="Our Final Blog: Using NLP to Predict Credit Downgrades After our second blog, we made significant changes to the analysis of our tokenized words. \ We have not made any changes to the initial stages (webscraping, preprocessing, tokenization). Analysis: We have decided to change our analysis of the training data into …">
+
+        <title>Our Group Work Process: Using NLP to Predict Credit Downgrades, Part III (by &#34;Group 8&#34;)  · FINA4350 Student Blog 2023
+</title>
+        <link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="FINA4350 Student Blog 2023 - Full Atom Feed" />
+
+
+
+    </head>
+    <body>
+        <div id="content">
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/"><span class=site-name>FINA4350 Student Blog 2023</span></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right top-menu">
+                                <li >
+                                    <a href=
+                                       https://buehlmaier.github.io/FINA4350-student-blog-2023-01
+                                    >Home</a>
+                                </li>
+                                <li ><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/categories.html">Categories</a></li>
+                                <li ><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/tags.html">Tags</a></li>
+                                <li ><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/archives.html">Archives</a></li>
+                                <li><form class="navbar-search" action="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span10">
+<article itemscope>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+        <h1>
+            <a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/our-group-work-process-using-nlp-to-predict-credit-downgrades-part-iii-by-group-8.html">
+                Our Group Work Process: Using NLP to Predict Credit Downgrades, Part III (by "Group 8")
+            </a>
+        </h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+            
+            <h1>Our Final Blog: Using NLP to Predict Credit Downgrades</h1>
+<p>After our second blog, we made significant changes to the analysis of our tokenized words. \
+We have not made any changes to the initial stages (webscraping, preprocessing, tokenization).</p>
+<p><strong>Analysis</strong>: We have decided to change our analysis of the training data into two approaches: Clustering and Similarity. \
+We had to change our approaches as our initial approach was a human process prone that was too qualitative and prone to flaws such as context.</p>
+<p>1.Clustering: For clustering, we used Tf-Idf weighted bag of words to analyze frequency within and across docuemnts. \
+These generated vectors based on weighting for the ML model. \
+The end product of our analysis comes in the form of a visualization through word cloud.</p>
+<p>The meaningful parts of the code are shown below.</p>
+<div class="highlight"><pre><span></span><code>#<span class="nv">visualizing</span> <span class="nv">tf</span><span class="o">-</span><span class="nv">idf</span> <span class="nv">cloud</span> <span class="ss">(</span><span class="nv">code</span> <span class="nv">can</span> <span class="nv">be</span> <span class="nv">reproduced</span> <span class="nv">using</span> <span class="nv">file</span> <span class="nv">clusteringModel</span>.<span class="nv">py</span><span class="ss">)</span>
+<span class="nv">dense</span> <span class="o">=</span> <span class="nv">tfidf</span>.<span class="nv">todense</span><span class="ss">()</span>
+<span class="nv">lst1</span> <span class="o">=</span> <span class="nv">dense</span>.<span class="nv">tolist</span><span class="ss">()</span>
+<span class="nv">df</span> <span class="o">=</span> <span class="nv">pd</span>.<span class="nv">DataFrame</span><span class="ss">(</span><span class="nv">lst1</span>, <span class="nv">columns</span><span class="o">=</span><span class="nv">feature_names</span><span class="ss">)</span>
+<span class="nv">Cloud</span> <span class="o">=</span> <span class="nv">WordCloud</span><span class="ss">(</span><span class="nv">background_color</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">white</span><span class="s2">&quot;</span><span class="ss">)</span>.<span class="nv">generate_from_frequencies</span><span class="ss">(</span><span class="nv">df</span>.<span class="nv">T</span>.<span class="nv">sum</span><span class="ss">(</span><span class="nv">axis</span><span class="o">=</span><span class="mi">1</span><span class="ss">))</span>
+<span class="nv">plt</span>.<span class="nv">imshow</span><span class="ss">(</span><span class="nv">Cloud</span>, <span class="nv">interpolation</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">bilinear</span><span class="s1">&#39;</span><span class="ss">)</span>
+<span class="nv">plt</span>.<span class="nv">axis</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">off</span><span class="s2">&quot;</span><span class="ss">)</span>
+<span class="nv">plt</span>.<span class="k">show</span><span class="ss">()</span>
+</code></pre></div>
+
+<p>Afterwards, we used the K-means clustering model to find clusters of similar words. \
+We used the elbow method to optimize the number of clusters.\
+We have spent significant time training the model with more data to increase the accuracy of model generation, \
+while also performing text classification analysis to determine which clusters better predict defaults. \
+We used this cluster to find the words that would signal future default.</p>
+<p>The meaningful parts of the code are shown below.</p>
+<div class="highlight"><pre><span></span><code><span class="s s-Atom">#our</span> <span class="s s-Atom">k</span><span class="o">-</span><span class="s s-Atom">means</span> <span class="nf">model</span> <span class="p">(</span><span class="s s-Atom">code</span> <span class="s s-Atom">can</span> <span class="s s-Atom">be</span> <span class="s s-Atom">reproduced</span> <span class="s s-Atom">using</span> <span class="s s-Atom">file</span> <span class="s s-Atom">clusteringModel</span><span class="p">.</span><span class="s s-Atom">py</span><span class="p">))</span>
+<span class="s s-Atom">true_k</span> <span class="o">=</span> <span class="mi">3</span> <span class="s s-Atom">#</span> <span class="s s-Atom">change</span> <span class="s s-Atom">as</span> <span class="s s-Atom">needed</span>
+<span class="s s-Atom">model</span> <span class="o">=</span> <span class="nv">KMeans</span><span class="p">(</span><span class="s s-Atom">n_clusters</span> <span class="o">=</span> <span class="s s-Atom">true_k</span><span class="p">,</span> <span class="s s-Atom">init</span> <span class="o">=</span> <span class="s s-Atom">&#39;k-means++&#39;</span><span class="p">,</span> <span class="s s-Atom">n_init</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="s s-Atom">model</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="s s-Atom">tfidf</span><span class="p">)</span>
+
+<span class="s s-Atom">#</span> <span class="s s-Atom">printing</span> <span class="s s-Atom">top</span> <span class="s s-Atom">terms</span> <span class="s s-Atom">per</span> <span class="s s-Atom">cluster</span>
+<span class="nf">print</span><span class="p">(</span><span class="s2">&quot;Top terms per cluster:&quot;</span><span class="p">)</span>
+<span class="s s-Atom">order_centroids</span> <span class="o">=</span> <span class="s s-Atom">model</span><span class="p">.</span><span class="s s-Atom">cluster_centers_</span><span class="p">.</span><span class="nf">argsort</span><span class="p">()[</span><span class="s s-Atom">:</span><span class="p">,</span> <span class="s s-Atom">::-</span><span class="mi">1</span><span class="p">]</span>
+<span class="s s-Atom">for</span> <span class="s s-Atom">i</span> <span class="s s-Atom">in</span> <span class="nf">range</span><span class="p">(</span><span class="s s-Atom">true_k</span><span class="p">)</span><span class="s s-Atom">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s2">&quot;Cluster %d:&quot;</span> <span class="c1">% i),</span>
+    <span class="s s-Atom">for</span> <span class="s s-Atom">ind</span> <span class="s s-Atom">in</span> <span class="s s-Atom">order_centroids</span><span class="p">[</span><span class="s s-Atom">i</span><span class="p">,</span> <span class="s s-Atom">:</span><span class="mi">10</span><span class="p">]</span><span class="s s-Atom">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s s-Atom">&#39; %s&#39;</span> <span class="c1">% feature_names[ind]),</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">)</span>
+
+<span class="s s-Atom">#</span> <span class="s s-Atom">making</span> <span class="s s-Atom">predictions</span>
+<span class="s s-Atom">temp</span> <span class="o">=</span> <span class="s s-Atom">v</span><span class="p">.</span><span class="nf">fit_transform</span><span class="p">(</span><span class="s s-Atom">testData</span><span class="p">)</span>
+<span class="s s-Atom">prediction</span> <span class="o">=</span> <span class="s s-Atom">model</span><span class="p">.</span><span class="nf">fit_predict</span><span class="p">(</span><span class="s s-Atom">temp</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s s-Atom">prediction</span><span class="p">)</span>
+</code></pre></div>
+
+<p>2.Similarity Approach: For the similarity approach, we used the doc2vec neural network to estimate the relationship between words when turning them into a vector. \
+This was done by considering the context with neighbouring terms, meaning the word order matters.</p>
+<p>The meaningful parts of the code are shown below.</p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="n">embeddings</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">reproduced</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">doc2vec</span><span class="p">.</span><span class="n">py</span><span class="p">)</span><span class="w"></span>
+<span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Doc2Vec</span><span class="p">(</span><span class="o">[</span><span class="n">TaggedDocument(doc, [i</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">enumerate</span><span class="p">(</span><span class="n">textList</span><span class="p">)</span><span class="err">]</span><span class="p">,</span><span class="w"> </span><span class="n">workers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">min_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<span class="n">similar_word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">wv</span><span class="p">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="k">print</span><span class="p">(</span><span class="n">similar_word</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<p>We wondered what the most effective neighbouring window was, given that context is dependent on the neighbouring window \
+and too large of a neighbouring window would make the process too slow.\
+Furthermore, there are foreseeable limitations. It is dependent on the vocabulary in the training data, meaning that out-of-vocabulary (OOV) words are not recognized by the model.</p>
+<p>We then used soft-cosine measure to predict the similarity between documents based on contextual relationships from words. \
+Since soft-cosine measure struggles with vector geometry, we incorporated the word embeddings from doc2vec so that the context is considered when the documents are compared. \
+The end goal is to look analyze the similarity of new reports to our training data and see whether the downgrades would likely lead to default.</p>
+<p>The meaningful parts of the code are shown below.</p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="n">SCM</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">reproduced</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">doc2vec</span><span class="p">.</span><span class="n">py</span><span class="p">)</span><span class="w"></span>
+<span class="n">termsim_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WordEmbeddingSimilarityIndex</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="w"></span>
+<span class="n">termsim_matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SparseTermSimilarityMatrix</span><span class="p">(</span><span class="n">termsim_index</span><span class="p">,</span><span class="w"> </span><span class="k">dictionary</span><span class="p">,</span><span class="w"> </span><span class="n">tfidf</span><span class="p">)</span><span class="w"></span>
+
+<span class="n">def</span><span class="w"> </span><span class="n">SCM</span><span class="p">(</span><span class="n">docA</span><span class="p">,</span><span class="w"> </span><span class="n">docB</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">similarity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">termsim_matrix</span><span class="p">.</span><span class="n">inner_product</span><span class="p">(</span><span class="n">docA</span><span class="p">,</span><span class="w"> </span><span class="n">docB</span><span class="p">,</span><span class="w"> </span><span class="n">normalized</span><span class="o">=</span><span class="p">(</span><span class="k">True</span><span class="p">,</span><span class="w"> </span><span class="k">True</span><span class="p">))</span><span class="w"></span>
+
+<span class="err">#</span><span class="w"> </span><span class="n">testing</span><span class="w"></span>
+
+<span class="k">for</span><span class="w"> </span><span class="n">ind</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">textList</span><span class="p">))</span><span class="err">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">joinedText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">.</span><span class="k">join</span><span class="p">(</span><span class="n">textList</span><span class="o">[</span><span class="n">ind</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">textList</span><span class="o">[</span><span class="n">ind</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">joinedText</span><span class="w"></span>
+
+<span class="k">for</span><span class="w"> </span><span class="n">ind</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">testData</span><span class="p">))</span><span class="err">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">joinedText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">.</span><span class="k">join</span><span class="p">(</span><span class="n">testData</span><span class="o">[</span><span class="n">ind</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">testData</span><span class="o">[</span><span class="n">ind</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">joinedText</span><span class="w"></span>
+
+<span class="k">print</span><span class="p">(</span><span class="o">[</span><span class="n">SCM(textList[0</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">testData</span><span class="err">]</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<p><strong>Results and Reflection</strong>:
+The biggest challenge we faced with our project was obtaining meaningful results. For example, \
+we were not happy with the clustering of word groups provided by the model. As a result, we spent extra time training the model with more data.</p>
+<p>The complexity of our project presented one of our biggest challenges. We set ambitious goals, resulting in a highly technical project. \
+Furthermore, our initial planning lacked specificity, and we didn't have a clear vision of the intended outcome or deliverable. \
+Additionally, our group had a weak understanding of the capabilities of machine learning. \
+This made it challenging to plan the necessary steps and time needed to execute the project successfully. \
+As a result, we had to continually revise the methodology of our analysis to ensure we were on the right track.</p>
+<p>In addition to this, we found it challenging to communicate as a group online, as most of us had little understanding of the coding aspects of this project. \
+Many of the tasks were also dependent on the completion of tasks by other people. \
+We were also very unfamiliar with collaborative coding tools, such as version control. \ 
+However, towards the end of the project, we improved our collaborative coding by using strategies such as pair coding.</p>
+<p>For the soft cosine method, we lacked sufficient training data to make our measurements accurate. \
+Small changes in the model can create huge changes in the measurement, making uncertainty of this model quite big.</p>
+<p>From a bigger picture, our initial assumption of using downgrade reports as a proxy/indication of credit health deterioration can be challenged. \
+We could have considered expanding on our testing data to include other financial data such as corporate bond valuations to make the testing data more comprehensive. \
+The project design would be improved if we had a better financial understanding of bonds and the data commonly used to measure credit health deterioration.</p>
+<p>For a comprehensive write-up of our results, please refer to our group report. To access the entire project code files, please visit our GitHub page.</p>
+<p>This is the final blog for our project. We have tried to illustrate the challenges we faced and the changes we made throughout the project. \
+We hope there were some useful insights for anyone reading!</p>
+
+
+             
+ 
+            
+            
+            
+
+
+
+
+
+
+
+            <hr/>
+        </div>
+        <section id="article-sidebar" class="span2">
+            <h4>Published</h4>
+            <time itemprop="dateCreated" datetime="2023-05-04T21:09:00+08:00">Thu 04 May 2023</time>
+            <h4>Category</h4>
+            <a class="category-link" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/categories.html#progress-report-ref">Progress Report</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/tags.html#group8-ref">Group8
+                    <span class="superscript">3</span>
+</a></li>
+            </ul>
+<h4>Contact</h4>
+<div id="sidebar-social-link">
+    <a href="https://github.com/buehlmaier/FINA4350-student-blog-2023-01" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1B1817"/><path fill="#fff" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+    </a>
+</div>
+            
+
+
+
+
+
+            
+
+
+
+
+
+        </section>
+</div>
+</article>
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>                    </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+        </div>
+<footer>
+
+
+
+
+    <div id="fpowered">
+        Powered by: <a href="http://getpelican.com/" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>
+        Theme: <a href="https://elegant.oncrashreboot.com/" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>
+    </div>
+</footer>            <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/js/elegant.prod.9e9d5ce754.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    <script>
+    (function () {
+        if (window.location.hash.match(/^#comment-\d+$/)) {
+            $('#comment_thread').collapse('show');
+        }
+    })();
+    window.onhashchange=function(){
+        if (window.location.hash.match(/^#comment-\d+$/))
+            window.location.reload(true);
+    }
+    $('#comment_thread').on('shown', function () {
+        var link = document.getElementById('comment-accordion-toggle');
+        var old_innerHTML = link.innerHTML;
+        $(link).fadeOut(200, function() {
+            $(this).text('Click here to hide comments').fadeIn(200);
+        });
+        $('#comment_thread').on('hidden', function () {
+            $(link).fadeOut(200, function() {
+                $(this).text(old_innerHTML).fadeIn(200);
+            });
+        })
+    })
+</script>
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+        License : MIT -->
+</html>
