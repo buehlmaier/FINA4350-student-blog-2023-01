@@ -1,5 +1,5 @@
 ---
-Title: Project Diary II (by "Sibo")
+Title:  Predict a Company’s Sales Growth Using Financial Statements (by "Sibo")
 Date: 2023-05-03 11:17
 Category: Progress Report
 Tags: Sibo
