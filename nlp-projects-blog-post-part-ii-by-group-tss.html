@@ -81,7 +81,7 @@
             <p>By Group "TSS"</p>
 <h1>Model Training: Challenges Encountered</h1>
 <h3>1. Web Scraping</h3>
-<p>As stated before, we used the App store and the Google Play store to obtain the online apps’ user comments data. However, we faced some issues with the app_store_scraper, the web scrapper platform for the App store; it only could fetch 400 entries or users’ comments even though there were millions of user’s comments in the App store for the Microsoft’s online apps used. Although we tried to solve this technical issue, it was still giving the same output. Thus, we decided to move forward with using only the Google Play store for the online apps’ reviews. We do not think that this had any negative impact on our model since Google Play store is more widely used than the App store and it contained a greater volume of reviews than the App store. Below is a sample code showing the volume of reviews obtained from the Google Play store.</p>
+<p>As stated before, we used the App store and the Google Play store to obtain the online apps’ user comments data. However, we faced some issues with the app_store_scraper, the web scrapper platform for the App store; it could only fetch 400 entries or users’ comments even though there were millions of user’s comments in the App store for Microsoft’s online apps used. Although we tried to solve this technical issue, it was still giving the same output. Thus, we decided to move forward with using the Google Play store only for the online apps’ reviews. We do not think that this had any negative impact on our model since Google Play store is more widely used than the App store and it contained a greater volume of reviews than the App store. Below is a sample code showing the volume of reviews obtained from the Google Play store.</p>
 <div class="highlight"><pre><span></span><code>[{<span class="s1">&#39;</span><span class="s">name</span><span class="s1">&#39;</span>: <span class="s1">&#39;</span><span class="s">outlook</span><span class="s1">&#39;</span>,
   <span class="s1">&#39;</span><span class="s">google_id</span><span class="s1">&#39;</span>: <span class="s1">&#39;</span><span class="s">com.microsoft.office.outlook</span><span class="s1">&#39;</span>,
   <span class="s1">&#39;</span><span class="s">continuation_token_google</span><span class="s1">&#39;</span>: <span class="o">&lt;</span><span class="nv">google_play_scraper</span>.<span class="nv">features</span>.<span class="nv">reviews</span>.<span class="nv">_ContinuationToken</span> <span class="nv">at</span> <span class="mi">0</span><span class="nv">x290aeaa59f0</span><span class="o">&gt;</span>,
@@ -97,59 +97,63 @@
   <span class="mi">449997</span>                                      <span class="nv">My</span> <span class="nv">favorite</span><span class="o">!!</span>      <span class="mi">5</span>  <span class="mi">2023</span>    <span class="nv">Q2</span>
   <span class="mi">449998</span>                                            <span class="nv">Perfect</span>      <span class="mi">5</span>  <span class="mi">2023</span>    <span class="nv">Q2</span>
   <span class="mi">449999</span>  <span class="nv">Microsoft</span> <span class="nv">Expectation</span> <span class="nv">is</span> <span class="nv">an</span> <span class="nv">amazing</span> <span class="nv">applicatio</span>...      <span class="mi">4</span>  <span class="mi">2023</span>    <span class="nv">Q2</span>
+  ```
+
+
+##<span class="sc">#2</span>. <span class="nv">Sales</span> <span class="nv">and</span> <span class="nv">Scores</span>: <span class="nv">Data</span> <span class="nv">Correlation</span>
+
+  <span class="nv">Our</span> <span class="nv">two</span> <span class="nv">data</span> <span class="nv">inputs</span> <span class="k">for</span> <span class="nv">our</span> <span class="nv">NLP</span> <span class="nv">model</span> <span class="nv">were</span> <span class="nv">the</span> <span class="nv">quarterly</span> <span class="nv">sale</span> <span class="nv">figures</span> <span class="nv">from</span> <span class="nv">Microsoft</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">last</span> <span class="nv">three</span> <span class="nv">years</span>, <span class="nv">and</span> <span class="nv">the</span> <span class="nv">online</span> <span class="nv">apps</span>’ <span class="nv">reviews</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">most</span> <span class="nv">popular</span> <span class="nv">Microsoft</span>’<span class="nv">s</span> <span class="nv">online</span> <span class="nv">apps</span> <span class="ss">(</span><span class="nv">Outlook</span>, <span class="nv">Authenticator</span>, <span class="nv">Microsoft</span>’<span class="nv">s</span> <span class="nv">Teams</span>, <span class="nv">and</span> <span class="nv">Microsoft</span>’<span class="nv">s</span> <span class="mi">365</span><span class="ss">)</span>. <span class="nv">Our</span> <span class="k">end</span> <span class="nv">goal</span> <span class="nv">was</span> <span class="nv">to</span> <span class="nv">correlate</span> <span class="nv">the</span> <span class="nv">scores</span> <span class="nv">obtained</span> <span class="nv">from</span> <span class="nv">the</span> <span class="nv">sentiment</span> <span class="nv">analysis</span> <span class="nv">model</span> <span class="nv">applied</span> <span class="nv">to</span> <span class="nv">the</span> <span class="nv">online</span> <span class="nv">app</span>’<span class="nv">s</span> <span class="nv">reviews</span> <span class="nv">with</span> <span class="nv">the</span> <span class="nv">quarterly</span> <span class="nv">sales</span> <span class="nv">figures</span>, <span class="nv">but</span> <span class="nv">as</span> <span class="nv">we</span> <span class="nv">moved</span> <span class="nv">forward</span> <span class="nv">in</span> <span class="nv">our</span> <span class="nv">model</span> <span class="nv">training</span>, <span class="nv">we</span> <span class="nv">realized</span> <span class="nv">that</span> <span class="mi">1</span><span class="ss">)</span> <span class="nv">the</span> <span class="nv">consumer</span> <span class="nv">sentiment</span> <span class="nv">on</span> <span class="nv">the</span> <span class="nv">online</span> <span class="nv">apps</span> <span class="nv">did</span> <span class="nv">not</span> <span class="nv">have</span> <span class="nv">such</span> <span class="nv">a</span> <span class="nv">strong</span> <span class="nv">effect</span> <span class="nv">on</span> <span class="nv">the</span> <span class="nv">sales</span> <span class="nv">projections</span>, <span class="nv">and</span> <span class="mi">2</span><span class="ss">)</span> <span class="nv">the</span> <span class="nv">sales</span> <span class="nv">figures</span> <span class="nv">did</span> <span class="nv">not</span> <span class="nv">match</span> <span class="nv">the</span> <span class="nv">frequency</span> <span class="nv">of</span> <span class="nv">the</span> <span class="nv">users</span>’ <span class="nv">comments</span> <span class="ss">(</span><span class="nv">there</span> <span class="nv">were</span> <span class="nv">many</span> <span class="nv">instances</span> <span class="nv">of</span> <span class="nv">user</span>’<span class="nv">s</span> <span class="nv">comments</span> <span class="nv">and</span> <span class="nv">only</span> <span class="mi">12</span> <span class="nv">actual</span> <span class="nv">values</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">sales</span> <span class="nv">figures</span><span class="ss">)</span>. 
+
+<span class="nv">Related</span> <span class="nv">to</span> <span class="nv">issue</span> <span class="mi">1</span>, <span class="nv">it</span> <span class="nv">is</span> <span class="nv">important</span> <span class="nv">to</span> <span class="nv">mention</span> <span class="nv">that</span> <span class="nv">Microsoft</span>’<span class="nv">s</span> <span class="nv">online</span> <span class="nv">apps</span> <span class="nv">still</span> <span class="nv">had</span> <span class="nv">some</span> <span class="nv">correlation</span> <span class="nv">to</span> <span class="nv">sales</span> <span class="nv">figures</span>, <span class="nv">but</span> <span class="nv">not</span> <span class="nv">as</span> <span class="nv">much</span> <span class="nv">as</span> <span class="nv">we</span> <span class="nv">expected</span>. <span class="nv">What</span> <span class="nv">we</span> <span class="nv">did</span> <span class="nv">to</span> <span class="nv">address</span> <span class="nv">that</span> <span class="nv">was</span> <span class="nv">to</span> <span class="nv">analyze</span> <span class="nv">each</span> <span class="nv">online</span> <span class="nv">app</span> <span class="nv">individually</span> <span class="nv">to</span> <span class="nv">determine</span> <span class="nv">which</span> <span class="nv">one</span> <span class="nv">had</span> <span class="nv">the</span> <span class="nv">biggest</span> <span class="nv">correlation</span> <span class="nv">with</span> <span class="nv">sales</span>. <span class="nv">After</span> <span class="nv">doing</span> <span class="nv">that</span>, <span class="nv">we</span> <span class="nv">determined</span> <span class="nv">that</span> <span class="nv">Outlook</span> <span class="nv">online</span> <span class="nv">app</span> <span class="nv">was</span> <span class="nv">the</span> <span class="nv">one</span> <span class="nv">with</span> <span class="nv">the</span> <span class="nv">biggest</span> <span class="nv">correlation</span> <span class="nv">coefficient</span>, <span class="nv">which</span> <span class="nv">was</span> <span class="mi">0</span>.<span class="mi">11</span>. <span class="nv">Below</span> <span class="nv">is</span> <span class="nv">some</span> <span class="nv">sample</span> <span class="nv">code</span> <span class="nv">of</span> <span class="nv">the</span> <span class="nv">Outlook</span> <span class="nv">correlation</span> <span class="nv">analysis</span>.
 </code></pre></div>
 
-<p>### 2. Sales and Scores data Correlation</p>
-<p>Our two data inputs for our NLP model were the quarterly sales figures from Microsoft for the last three years, and the online apps’ reviews for the most popular Microsoft’s online apps (Outlook, Authenticator, Microsoft’s Teams, and Microsoft’s 365). Our end goal was to correlate the scores obtained from the sentiment analysis model applied to the online app’s reviews with the quarterly sales figures, but as we moved forward in our model training, we realized that 1) the consumer sentiment on the online apps did not have such a strong effect on the sales projections, and 2) the sales figures did not match the frequency of the users’ comments (there were many instances of user’s comments and only 12 actual values for the sales figures). </p>
-<p>Related to issue 1, it is important to mention that Microsoft’s online apps still had some correlation to sales figures, but not as much as we expected. What we did to address that was to analyze each online app individually to determine which one had the biggest correlation with sales. After doing that, we determined that Outlook online app was the one with the biggest correlation coefficient, which was 0.11. Below is some sample code of the Outlook correlation analysis.</p>
-<div class="highlight"><pre><span></span><code># Outlook&#39;s score
-# Heatmap
-corr_matrix = df_merge_product[df_merge_product[&#39;product&#39;] == &#39;outlook&#39;][[&#39;sales&#39;,&#39;Year&#39;, &#39;score&#39;, &#39;score_vader&#39;, 
-                                &#39;score_bow_0.2&#39;, &#39;score_bow_0.4&#39;, 
-                                &#39;score_bow_0.6&#39;,&#39;score_bow_0.8&#39;]].corr()
+<h1>Outlook's score</h1>
+<h1>Heatmap</h1>
+<p>corr_matrix = df_merge_product[df_merge_product['product'] == 'outlook'][['sales','Year', 'score', 'score_vader', 
+                                'score_bow_0.2', 'score_bow_0.4', 
+                                'score_bow_0.6','score_bow_0.8']].corr()</p>
+<h1>Create the heatmap</h1>
+<p>sns.heatmap(corr_matrix, annot=True)</p>
+<div class="highlight"><pre><span></span><code><span class="n">Related</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">issue</span><span class="w"> </span><span class="mh">2</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">user</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="n">comments</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">quarter</span><span class="w"> </span><span class="n">did</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">match</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">sales</span><span class="w"> </span><span class="n">values</span><span class="p">.</span><span class="w"> </span><span class="n">So</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">made</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="n">match</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">sales</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">quarter</span><span class="p">;</span><span class="w"> </span><span class="n">thus</span><span class="p">,</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">comments</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">quarter</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">sales</span><span class="w"> </span><span class="n">figure</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">assigned</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">comment</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">comparison</span><span class="w"> </span><span class="n">during</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">quarter</span><span class="p">.</span><span class="w"> </span>
 
-# Create the heatmap
-sns.heatmap(corr_matrix, annot=True)
+<span class="n">Sample</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">sales</span><span class="w"> </span><span class="n">figures</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">scores</span><span class="w"> </span><span class="nl">values:</span><span class="w"></span>
 </code></pre></div>
 
-<p>Related to issue 2, the number of user’s comments for a quarter did not match the sales values. So, we made the values match by using the same sales amount for each quarter; thus, for all comments in one quarter, the same sales figure was assigned to each comment for comparison during that quarter. </p>
-<p>Sample code of sales figures and scores values:</p>
-<div class="highlight"><pre><span></span><code> &quot;text/plain&quot;: [
-       &quot;                                             content  score  Year Quarter  \\\n&quot;,
-       &quot;0                                           easy use      5  2020      Q1   \n&quot;,
-       &quot;1  fining &amp; reaing important email easier (thanks...      4  2020      Q1   \n&quot;,
-       &quot;2                                 excellent hany usr      5  2020      Q1   \n&quot;,
-       &quot;3                                                lov      4  2020      Q1   \n&quot;,
-       &quot;4                           awesome easy use...... 😊      5  2020      Q1   \n&quot;,
-       &quot;\n&quot;,
-       &quot;   score_vader  score_bow_0.2  score_bow_0.4  score_bow_0.6  score_bow_0.8  \\\n&quot;,
-       &quot;0            4              5              5              5              5   \n&quot;,
-       &quot;1            5              1              4              4              4   \n&quot;,
-       &quot;2            4              5              5              5              5   \n&quot;,
-       &quot;3            2              5              5              5              5   \n&quot;,
-       &quot;4            5              5              5              5              5   \n&quot;,
-       &quot;\n&quot;,
-       &quot;   product  sales  \n&quot;,
-       &quot;0  outlook  35021  \n&quot;,
-       &quot;1  outlook  35021  \n&quot;,
-       &quot;2  outlook  35021  \n&quot;,
-       &quot;3  outlook  35021  \n&quot;,
-       &quot;4  outlook  35021  &quot;
+<p>"text/plain": [
+       "                                             content  score  Year Quarter  \\n",
+       "0                                           easy use      5  2020      Q1   \n",
+       "1  fining &amp; reaing important email easier (thanks...      4  2020      Q1   \n",
+       "2                                 excellent hany usr      5  2020      Q1   \n",
+       "3                                                lov      4  2020      Q1   \n",
+       "4                           awesome easy use...... 😊      5  2020      Q1   \n",
+       "\n",
+       "   score_vader  score_bow_0.2  score_bow_0.4  score_bow_0.6  score_bow_0.8  \\n",
+       "0            4              5              5              5              5   \n",
+       "1            5              1              4              4              4   \n",
+       "2            4              5              5              5              5   \n",
+       "3            2              5              5              5              5   \n",
+       "4            5              5              5              5              5   \n",
+       "\n",
+       "   product  sales  \n",
+       "0  outlook  35021  \n",
+       "1  outlook  35021  \n",
+       "2  outlook  35021  \n",
+       "3  outlook  35021  \n",
+       "4  outlook  35021  "
       ]
      },
-     &quot;execution_count&quot;: 49,
-     &quot;metadata&quot;: {},
-     &quot;output_type&quot;: &quot;execute_result&quot;
+     "execution_count": 49,
+     "metadata": {},
+     "output_type": "execute_result"
     }
    ],
-   &quot;source&quot;: [
-    &quot;merged_df = df_merge_product.merge(df_sales, on=[&#39;Year&#39;, &#39;Quarter&#39;], how=&#39;left&#39;)\n&quot;,
-    &quot;\n&quot;,
-    &quot;df_merge_product[&#39;sales&#39;] = merged_df[&#39;Revenue_product&#39;]\n&quot;,
-    &quot;\n&quot;,
-    &quot;df_merge_product.head()&quot;
-</code></pre></div>
-
+   "source": [
+    "merged_df = df_merge_product.merge(df_sales, on=['Year', 'Quarter'], how='left')\n",
+    "\n",
+    "df_merge_product['sales'] = merged_df['Revenue_product']\n",
+    "\n",
+    "df_merge_product.head()"
+```</p>
 <h3>Final Remarks</h3>
 <p>We believe that the model could be greatly improved with future work that could address the issues we encountered with the data. For instance, a way our model could be more accurate is finding a dataset more continuous than quarterly sale figures to be able to match the frequency of user’s comments. Moreover, for our consumer sentiment analysis, we could look at other products offered by Microsoft and see if they have a stronger correlation to sales. Nonetheless, even though our model was not completely accurate in providing our sales prediction, it functioned as we trained it and it provided us with the sales growth projection for Q1 2023, which was our project’s end goal.</p>
 
