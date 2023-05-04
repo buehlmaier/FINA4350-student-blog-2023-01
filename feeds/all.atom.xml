@@ -275,7 +275,20 @@ We hope there were some useful insights for anyone reading!&lt;/p&gt;</content><
 &lt;p&gt;&lt;strong&gt;Forseeable Limitations&lt;/strong&gt;: The code will likely run slow. The entire project also relies on the BoW from Moodys only, as we struggled to scrape from S&amp;amp;P and Fitch. The analysis can also only be applied to the China Real Estate market; we are unsure whether it would work for other industries, or even the RE market in other regions. The amount of manual coding work needed to tweak the scraping parameters make our work very unscalable. Our scraping process is also prone to errors, and even with a sample size of only ~140 texts, our dataset is much smaller than typical studies that analyze thousands of texts."&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;We are excited to wrap up the project and submit our final report.&lt;/p&gt;</content><category term="Progress Report"></category><category term="Group8"></category></entry><entry><title>NLP Project's Blog Post, Part II (by "Group TSS")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/nlp-projects-blog-post-part-ii-by-group-tss.html" rel="alternate"></link><published>2023-04-30T00:00:00+08:00</published><updated>2023-04-30T00:00:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-30:/FINA4350-student-blog-2023-01/nlp-projects-blog-post-part-ii-by-group-tss.html</id><summary type="html">&lt;p&gt;By Group "TSS"&lt;/p&gt;
+&lt;p&gt;We are excited to wrap up the project and submit our final report.&lt;/p&gt;</content><category term="Progress Report"></category><category term="Group8"></category></entry><entry><title>EvGPT Web App (by "Group 6")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/evgpt-web-app-by-group-6.html" rel="alternate"></link><published>2023-04-30T12:12:00+08:00</published><updated>2023-04-30T12:12:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-30:/FINA4350-student-blog-2023-01/evgpt-web-app-by-group-6.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Author: Fung Ho Kit&lt;/em&gt;
+&lt;em&gt;Co-Author: Li Xinran, Yang Fan, Zhu Jiarui&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;It is actually really important to build a webapp. Development of codes usually are limited locally and the usage also be limited no matter how great your idea is. Therefore, it is necessary to think about how to get …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Author: Fung Ho Kit&lt;/em&gt;
+&lt;em&gt;Co-Author: Li Xinran, Yang Fan, Zhu Jiarui&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;It is actually really important to build a webapp. Development of codes usually are limited locally and the usage also be limited no matter how great your idea is. Therefore, it is necessary to think about how to get your work populated and circulated. There are several ways to implement that, which I have explore for one year or so.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Learning Full Stack Techniques: Being full stack means that you can both handle frontend and backend development. The requirements may be a bit hard since you need to acquire the knowledge of HTML/CSS for frontend template setting and JS/Flask/Node.js for backend function. Although I can have the experience in such workflow of development, it is rather difficult considering the short period of semester and potential workload from other courses. There are several benefits for such kind of development. Firstly, it can be more flexible in the content and functions, while the alternative in second methods will have some preset templates. Also, you will have more authority since you are the one hosting the websites.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Utilizing some libraries for building lightweight websites. I have multiple exploration on these tools such as Django and streamlit. I think one of the benefits is that these allow you to build a impress website within a short period since they have some templates so that you can use fewer lines to achieve the expected function. Also, they have a easy deployment choice. For example, streamlit have a web server. Therefore, I can deploy my model by just click several buttons. The real process to deploy a self-hosting website require more steps and more expenses on the web domain. There is one dilemma we face before today's final presentation is that our website fail due to the error "Resources out of limit". It seems that they only allow for 1 GB data storage unless you have upgrades on the plans. Therefore, it is better for demonstrating ideas and not for long-term development of websites.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Our current project is also using streamlit to put the code online (https://justinfungi-fina4350-nlp-part4-evegptwebapp-9vlrp3.streamlit.app/). It may not be a very perfect one but should be enough for us to deliver the ideas in our project. it causes me a lot of time to think about how to incorporate the AI model into the WebApp. Thanksfully, things worked out. And in the WebApp, user can choose the company in our portfolio to see the prediction. It is a limitation of our project that the webscraping and Sentiment scores calculation cannot be automated yet. We can only predict the stock price of the days with the text data from webscraping. If the webscraping process can be automated, our model can be more useful considering that it can update the prediction on a daily basis based on the newly scraped text and the stock price&lt;/p&gt;</content><category term="Progress Report"></category><category term="Group 6 EvGPT"></category></entry><entry><title>NLP Project's Blog Post, Part II (by "Group TSS")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/nlp-projects-blog-post-part-ii-by-group-tss.html" rel="alternate"></link><published>2023-04-30T00:00:00+08:00</published><updated>2023-04-30T00:00:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-30:/FINA4350-student-blog-2023-01/nlp-projects-blog-post-part-ii-by-group-tss.html</id><summary type="html">&lt;p&gt;By Group "TSS"&lt;/p&gt;
 &lt;h1&gt;Model Training: Challenges Encountered&lt;/h1&gt;
 &lt;h3&gt;1. Web Scraping&lt;/h3&gt;
 &lt;p&gt;As stated before, we used the App store and the Google Play store to obtain the online apps’ user comments data. However, we faced some issues with the app_store_scraper, the web scrapper platform for the App store; it …&lt;/p&gt;</summary><content type="html">&lt;p&gt;By Group "TSS"&lt;/p&gt;
@@ -355,7 +368,15 @@ We hope there were some useful insights for anyone reading!&lt;/p&gt;</content><
     "df_merge_product.head()"
 ```&lt;/p&gt;
 &lt;h3&gt;Final Remarks&lt;/h3&gt;
-&lt;p&gt;We believe that the model could be greatly improved with future work that could address the issues we encountered with the data. For instance, a way our model could be more accurate is finding a dataset more continuous than quarterly sale figures to be able to match the frequency of user’s comments. Moreover, for our consumer sentiment analysis, we could look at other products offered by Microsoft and see if they have a stronger correlation to sales. Nonetheless, even though our model was not completely accurate in providing our sales prediction, it functioned as we trained it and it provided us with the sales growth projection for Q1 2023, which was our project’s end goal.&lt;/p&gt;</content><category term="Progress Report"></category><category term="TSS"></category></entry><entry><title>Project Diary (by "Sibo")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/project-diary-by-sibo.html" rel="alternate"></link><published>2023-04-27T11:17:00+08:00</published><updated>2023-04-27T11:17:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-27:/FINA4350-student-blog-2023-01/project-diary-by-sibo.html</id><summary type="html">&lt;p&gt;I want to estimate and predict a company’s sales using Natural Language Processing (NLP) and machine learning to analyze its financial statements.&lt;/p&gt;
+&lt;p&gt;We believe that the model could be greatly improved with future work that could address the issues we encountered with the data. For instance, a way our model could be more accurate is finding a dataset more continuous than quarterly sale figures to be able to match the frequency of user’s comments. Moreover, for our consumer sentiment analysis, we could look at other products offered by Microsoft and see if they have a stronger correlation to sales. Nonetheless, even though our model was not completely accurate in providing our sales prediction, it functioned as we trained it and it provided us with the sales growth projection for Q1 2023, which was our project’s end goal.&lt;/p&gt;</content><category term="Progress Report"></category><category term="TSS"></category></entry><entry><title>EvGPT Final Version (by "Group 6")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/evgpt-final-version-by-group-6.html" rel="alternate"></link><published>2023-04-27T12:12:00+08:00</published><updated>2023-04-27T12:12:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-27:/FINA4350-student-blog-2023-01/evgpt-final-version-by-group-6.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Author: Fung Ho Kit&lt;/em&gt;
+&lt;em&gt;Co-Author: Li Xinran, Yang Fan, Zhu Jiarui&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;While Sentiment Scores are finished, it is excited to build the Step4 - EvGPT.&lt;/p&gt;
+&lt;p&gt;For the modeling, we use LSTM model to predict the stock price since it is a great model to track time series data. Different from my …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Author: Fung Ho Kit&lt;/em&gt;
+&lt;em&gt;Co-Author: Li Xinran, Yang Fan, Zhu Jiarui&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;While Sentiment Scores are finished, it is excited to build the Step4 - EvGPT.&lt;/p&gt;
+&lt;p&gt;For the modeling, we use LSTM model to predict the stock price since it is a great model to track time series data. Different from my initial thoughts, I discover that it probably fail if we use stock price to predict stock price. When we try to feed the stock price, the model tend to have a overfitting problem and try to predict the stock price according to what we get in the previous day. After the talk with my friends in the securities asset management company, I got some inspirations on the prediction. Instead of using the stock price which is rather naive and useless, we can manipulate some technical indicators to yield some insights on the momentum and the growth possibility.&lt;/p&gt;
+&lt;p&gt;There is also another question to think about - how many data I should use. it is not so difficult to retrieve information like stock price or statement nowadays. However, the key is that how can we use them. After researching more on different paper, it seems that we can manipulate the Look-back Method. Instead of 1-to-1 matching, we use n-to-1 matching which means we can consider the past n days data to predict the trend and have a conclusion on the stock price. By referencing more past data, our model can have the understanding of "Trend", which can help us have a better prediction&lt;/p&gt;
+&lt;p&gt;Another challenge is that how can we evaluate our model. While the prediction may fluctuate with the stock price, it is a unbiased and efficient way to assess our model. This question is proposed by our professor in the final presentation. This is rather important and there is no such a clear solution for question. There are papers using common loss such as RMSE or MAE to evaluate the model, but the loss is not so efficient. It should be a great direction to explore.&lt;/p&gt;</content><category term="Progress Report"></category><category term="Group 6 EvGPT"></category></entry><entry><title>Project Diary (by "Sibo")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/project-diary-by-sibo.html" rel="alternate"></link><published>2023-04-27T11:17:00+08:00</published><updated>2023-04-27T11:17:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-27:/FINA4350-student-blog-2023-01/project-diary-by-sibo.html</id><summary type="html">&lt;p&gt;I want to estimate and predict a company’s sales using Natural Language Processing (NLP) and machine learning to analyze its financial statements.&lt;/p&gt;
 &lt;h2&gt;April 3&lt;/h2&gt;
 &lt;p&gt;I choose &lt;em&gt;Coca-Cola Co&lt;/em&gt; (KO) for 2 main reasons. First, it is a worldwide food company listed on the &lt;em&gt;Dow Jones Industrial Average&lt;/em&gt;. Second, its …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I want to estimate and predict a company’s sales using Natural Language Processing (NLP) and machine learning to analyze its financial statements.&lt;/p&gt;
 &lt;h2&gt;April 3&lt;/h2&gt;
@@ -424,7 +445,16 @@ We hope there were some useful insights for anyone reading!&lt;/p&gt;</content><
 
 &lt;p&gt;&lt;img alt="Word Cloud" src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/images/Group-Sibo-Post01_Word_Cloud_-_Highest_Sales.png"&gt;&lt;/p&gt;
 &lt;h2&gt;April 30&lt;/h2&gt;
-&lt;p&gt;For supervised learning, I add 2 models: &lt;strong&gt;XGBoost regressor&lt;/strong&gt; and &lt;strong&gt;XGBoost classifier&lt;/strong&gt;.&lt;/p&gt;</content><category term="Progress Report"></category><category term="Sibo"></category></entry><entry><title>Challenges encountered in Data Preprocessing and Topic Modelling on FOMC and FED data (by "Group 2")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/challenges-encountered-in-data-preprocessing-and-topic-modelling-on-fomc-and-fed-data-by-group-2.html" rel="alternate"></link><published>2023-04-25T10:00:00+08:00</published><updated>2023-04-25T10:00:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-25:/FINA4350-student-blog-2023-01/challenges-encountered-in-data-preprocessing-and-topic-modelling-on-fomc-and-fed-data-by-group-2.html</id><summary type="html">&lt;p&gt;By Group 2&lt;/p&gt;
+&lt;p&gt;For supervised learning, I add 2 models: &lt;strong&gt;XGBoost regressor&lt;/strong&gt; and &lt;strong&gt;XGBoost classifier&lt;/strong&gt;.&lt;/p&gt;</content><category term="Progress Report"></category><category term="Sibo"></category></entry><entry><title>Dara processing (by "Group 6")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/dara-processing-by-group-6.html" rel="alternate"></link><published>2023-04-25T12:12:00+08:00</published><updated>2023-04-25T12:12:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-25:/FINA4350-student-blog-2023-01/dara-processing-by-group-6.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Author: Li Xinran&lt;/em&gt;
+&lt;em&gt;Co-Author: Fung Ho Kit, Yang Fan, Zhu Jiarui&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;After scraping the text data from various platforms, we need to process it before feeding it into the model. FinBERT supports many common English punctuations and can split a paragraph into sentences by itself. It saved us a lot …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Author: Li Xinran&lt;/em&gt;
+&lt;em&gt;Co-Author: Fung Ho Kit, Yang Fan, Zhu Jiarui&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;After scraping the text data from various platforms, we need to process it before feeding it into the model. FinBERT supports many common English punctuations and can split a paragraph into sentences by itself. It saved us a lot of work and what we did in the data processing part was mainly cleaning. During cleaning, the main difficulty we ran into was dealing with invalid characters.&lt;/p&gt;
+&lt;p&gt;At first glance, we noticed that there are some non-English letters (e.g., Ä) in the texts, and we thought: maybe those text entries are in other languages and we should just drop those observations. Once we took a closer look at the data, we found that:&lt;/p&gt;
+&lt;p&gt;1) Those non-English letters are actually the only "non-English composition" of the text entries where they appear, apart from them, the rest of the text is more or less a valid English paragraph.&lt;/p&gt;
+&lt;p&gt;2) The appearances of the non-English characters in different text entries show some pattern: certain combinations of those characters appear repetitively (e.g., Äô).&lt;/p&gt;
+&lt;p&gt;We then guess that those non-English characters were actually punctuations that got messy in the process of scraping. This was proved to be true when we opened the webpage where one of those texts was from.&lt;/p&gt;
+&lt;p&gt;In this case, we should not simply drop (by filtering out rows with non-Ascii characters) those observations containing invalid characters, because it would be a waste of data. What we did was to look through enough data, and try to find the mappings (e.g., ‚Äô is actually ') for, if not all, most of the "messy punctuations". Only after replacing them with their original form, we use the "Ascii filter" to drop the rows containing invalid characters (e.g., the full stop from the Chinese input method), which our model cannot process.&lt;/p&gt;</content><category term="Progress Report"></category><category term="Group 6 EvGPT"></category></entry><entry><title>Challenges encountered in Data Preprocessing and Topic Modelling on FOMC and FED data (by "Group 2")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/challenges-encountered-in-data-preprocessing-and-topic-modelling-on-fomc-and-fed-data-by-group-2.html" rel="alternate"></link><published>2023-04-25T10:00:00+08:00</published><updated>2023-04-25T10:00:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-25:/FINA4350-student-blog-2023-01/challenges-encountered-in-data-preprocessing-and-topic-modelling-on-fomc-and-fed-data-by-group-2.html</id><summary type="html">&lt;p&gt;By Group 2&lt;/p&gt;
 &lt;h2&gt;Intro and Objectives&lt;/h2&gt;
 &lt;p&gt;The objective of our project is to predict the rate hike rate using official FED materials such as FOMC meeting minutes, FOMC statements, FED speeches and FED testimonies. As inflation remains elevated, the Fed raised the fed funds rate by 25bps to 4.75 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;By Group 2&lt;/p&gt;
 &lt;h2&gt;Intro and Objectives&lt;/h2&gt;
@@ -496,7 +526,21 @@ We hope there were some useful insights for anyone reading!&lt;/p&gt;</content><
 
 &lt;p&gt;We then output the top 15 relevant words (features) of each topic. For example, topics 0 to 3:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Picture showing different Topics" src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/images/Group-2-Post01_Topics.png"&gt;&lt;/p&gt;
-&lt;p&gt;We can see that topic 0 and 1 are most relevant to rate hike prediction and topics 2 and 3 are less. Thus, we only keep speeches of topics 0 and 1 for machine learning.&lt;/p&gt;</content><category term="Progress Report"></category><category term="Group2"></category></entry><entry><title>NLP Project's Blog Post, Part I (by "Group TSS")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/nlp-projects-blog-post-part-i-by-group-tss.html" rel="alternate"></link><published>2023-04-14T00:00:00+08:00</published><updated>2023-04-14T00:00:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-14:/FINA4350-student-blog-2023-01/nlp-projects-blog-post-part-i-by-group-tss.html</id><summary type="html">&lt;p&gt;By Group "TSS"&lt;/p&gt;
+&lt;p&gt;We can see that topic 0 and 1 are most relevant to rate hike prediction and topics 2 and 3 are less. Thus, we only keep speeches of topics 0 and 1 for machine learning.&lt;/p&gt;</content><category term="Progress Report"></category><category term="Group2"></category></entry><entry><title>Scraping matters (by "Group 6")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/scraping-matters-by-group-6.html" rel="alternate"></link><published>2023-04-24T12:12:00+08:00</published><updated>2023-04-24T12:12:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-24:/FINA4350-student-blog-2023-01/scraping-matters-by-group-6.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Author: Yang Fan&lt;/em&gt;
+&lt;em&gt;Co-Author: Fung Ho Kit, Li Xinran, Zhu Jiarui&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;What to Scrape&lt;/h2&gt;
+&lt;p&gt;After we had settled on the theme, we decided to scrape on mainstream news media and social media platforms. Considering our selection are all US technology companies, The Wall Street Journal, Consumer News and Business Channel …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Author: Yang Fan&lt;/em&gt;
+&lt;em&gt;Co-Author: Fung Ho Kit, Li Xinran, Zhu Jiarui&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;What to Scrape&lt;/h2&gt;
+&lt;p&gt;After we had settled on the theme, we decided to scrape on mainstream news media and social media platforms. Considering our selection are all US technology companies, The Wall Street Journal, Consumer News and Business Channel, Bloomberg, and Yahoo News are news media. Social media will focus on Twitter.&lt;/p&gt;
+&lt;h2&gt;How to Scrape&lt;/h2&gt;
+&lt;p&gt;Web scraping is the process of extracting data from websites using automated tools. It involves sending HTTP requests to websites, retrieving HTML content, and parsing the data to extract relevant information. We use Python and several libraries for our project, including Requests, BeautifulSoup, and Selenium.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;TWITTER&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;This section is listed separately because Twitter scraping failed.&lt;/p&gt;
+&lt;p&gt;We first started using Twint, and with the workaround in its GitHub Issue #1433, Twint was confirmed to work still.
+However, after a large number of requests for data, we found that Twint was not officially maintained after the Twitter API was banned, and its "until" function was not working, so we could only read the first ten days of content. Once the request is over ten days, Twint can only retrieve a few tweets, and other people have also mentioned this in issues, but there currently lacks a solution.&lt;/p&gt;
+&lt;p&gt;Updated on March 30, Twint has been archived by the owner and it is now read-only.&lt;/p&gt;
+&lt;p&gt;We started using another approach by Selenium. This method is not flexible but effective enough. The only disadvantage we are facing is that the load time of the web server is too long, and we could only scrape like around 100 tweets per minute. From the previous result of Twint, we know that there is more than 20k tweets a day on the topic of "Google", that means we would take more than four hours to scrape. So if we want to scrape the six topics' tweets a day, we would need a day. The time effort is too large, and we decide to use the four news media only.&lt;/p&gt;</content><category term="Progress Report"></category><category term="Group 6 EvGPT"></category></entry><entry><title>NLP Project's Blog Post, Part I (by "Group TSS")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/nlp-projects-blog-post-part-i-by-group-tss.html" rel="alternate"></link><published>2023-04-14T00:00:00+08:00</published><updated>2023-04-14T00:00:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-04-14:/FINA4350-student-blog-2023-01/nlp-projects-blog-post-part-i-by-group-tss.html</id><summary type="html">&lt;p&gt;By Group "TSS"&lt;/p&gt;
 &lt;h1&gt;Microsofts' Sales Growth Forecast&lt;/h1&gt;
 &lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;In deciding our topic for this project, our goal was to focus on something that could have a useful and intuitive application in the context of finance and the investment scenario. Thinking about the main factors that influence stock investment decisions and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;By Group "TSS"&lt;/p&gt;
@@ -771,7 +815,139 @@ We hope there were some useful insights for anyone reading!&lt;/p&gt;</content><
 &lt;span class="c1"&gt;# TBC: add pre-processing here&lt;/span&gt;
 
 &lt;span class="c1"&gt;# TBC: add BoW here&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Progress Report"></category><category term="Group8"></category></entry><entry><title>Demo Blog Post</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/demo-blog-post.html" rel="alternate"></link><published>2023-01-31T01:12:00+08:00</published><updated>2023-01-31T01:12:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-01-31:/FINA4350-student-blog-2023-01/demo-blog-post.html</id><summary type="html">&lt;p&gt;By Group "Super NLP"&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Progress Report"></category><category term="Group8"></category></entry><entry><title>Literature reviews (by "Group 6")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/literature-reviews-by-group-6.html" rel="alternate"></link><published>2023-03-24T12:12:00+08:00</published><updated>2023-03-24T12:12:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-03-24:/FINA4350-student-blog-2023-01/literature-reviews-by-group-6.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Author: Zhu Jiarui&lt;/em&gt;
+&lt;em&gt;Co-Author: Fung Ho Kit, Yang Fan, Li Xinran&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;To start our project which aims to generate a framwork which can forecast stock price with historical stock data and realtime forum discussions, we firstly investigated several exsisting works and here are three papers we found might be useful …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Author: Zhu Jiarui&lt;/em&gt;
+&lt;em&gt;Co-Author: Fung Ho Kit, Yang Fan, Li Xinran&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;To start our project which aims to generate a framwork which can forecast stock price with historical stock data and realtime forum discussions, we firstly investigated several exsisting works and here are three papers we found might be useful for our project.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;CNN&lt;/strong&gt;: Deep Convolutional Neural Networks for Sentiment Analysis of Short Texts&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Dos Santos, C., &amp;amp; Gatti, M. (2014, August).&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This research conducted by IBM Research proposed &lt;strong&gt;CharSCNN&lt;/strong&gt; (Character to Sentence Convolutional Neural Network), uses two convolutional layers to extract relevant features from words and sentences of any size.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Initial Representation Levels embeddings&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Word-Level Embeddings&lt;/p&gt;
+&lt;p&gt;matrix multiplication&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Character-Level Embeddings&lt;/p&gt;
+&lt;p&gt;character-wise CNN&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sentence-Level Representation and Scoring&lt;/p&gt;
+&lt;p&gt;Produce local features around each word in the sentence and then combines them using a max operation to create a fixed-sized feature vector for the sentence.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Although this paper only conducted polarity analysis and classify the news into positice/negitive only, it generates a unique score for each news and filter it by a certain threshold. We could modify it and keep the score information in our work.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;BERT&lt;/strong&gt;: FinBERT: Financial Sentiment Analysis with Pre-trained Language Models&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Araci, D. (2019).&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Researchers from University of Amsterdam FinBERT proposed a language model based on BERT, to tackle NLP tasks in financial domain. After further trained on
+TRC2-financial and Financial PhraseBank database, FinBERT got outstanding performance on financial news and discussions.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;LSTM&lt;/strong&gt;: Deep learning for stock prediction using numerical and textual information&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Akita, R., Yoshihara, A., Matsubara, T., &amp;amp; Uehara, K. (2016, June).&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This work published on IEEE proposed a novel application of deep learning models, Paragraph Vector, and Long Short-Term Memory (LSTM), to financial time series forecasting. It provides a workable approach for us to combine text information and historical financial data.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Mapping&lt;/p&gt;
+&lt;p&gt;Distributed Memory Model of Paragraph Vectors (PV-DM) and Distributed Bag of Words version of Paragraph Vector (PV-DBOW)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Financial value converting&lt;/p&gt;
+&lt;p&gt;&lt;span class="math"&gt;\(\Large value_{cn}^t = \frac{2*price_{cn}^t-(max{cn}+min_{cn})}{max_{cn}-min_{cn}}\)&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;After finishing processing the financial and text data individually, the authors utilized the matrix multiplication to unify their vector dimension so that the influence of both data can have similar weights. Then they directly merge the two time sequence of vectors and feed it into LSTM model, so that they wish to forecast the coming stock price.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Progress Report"></category><category term="Group 6 EvGPT"></category></entry><entry><title>Bag Of words (by "Group 6")</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/bag-of-words-by-group-6.html" rel="alternate"></link><published>2023-02-05T12:12:00+08:00</published><updated>2023-02-05T12:12:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-02-05:/FINA4350-student-blog-2023-01/bag-of-words-by-group-6.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Author: Fung Ho Kit&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Co-Author: Yang Fan, Zhu Jiarui, Li Xinran&lt;/em&gt;  &lt;/p&gt;
+&lt;p&gt;During the lecture, Dr.BUEHLMAIER showed us the monitoring program for Twitter. The program catches my message and downloads it on the laptop. While the program can capture the tweets containing words that are specified in a word bank …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Author: Fung Ho Kit&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Co-Author: Yang Fan, Zhu Jiarui, Li Xinran&lt;/em&gt;  &lt;/p&gt;
+&lt;p&gt;During the lecture, Dr.BUEHLMAIER showed us the monitoring program for Twitter. The program catches my message and downloads it on the laptop. While the program can capture the tweets containing words that are specified in a word bank, a question appeared in my mind - What kind of words should I monitor?&lt;/p&gt;
+&lt;p&gt;I think the situations should be complicated given the complex operations in the financial markets. By applying the divide-and-conquer method, a categorization should work well to better classify the various need in different situations&lt;/p&gt;
+&lt;p&gt;From my point of view, a possible way to categorize is that we divided the whole pie into:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;i) Capital markets (bond, equity securities, derivative securities);&lt;/li&gt;
+&lt;li&gt;iv) Cryptocurrency markets&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The reasons for my division are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;i) The first one is the knowledge I obtained from the course [FINA2320] and [FINA2330], I think that there are different focuses in these different markets, and a separation of word bank increase the possibility that we can scrape useful information. For example, the stock markets should focus on the companies' behaviors. Once we fix the portfolio of stocks, we can closely monitor the tweet related to those companies' operations, such as a large cash flow or some agency problem that occurred.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ii) The second one is the learning I gained from my current internship experience [Optymize Potocol @Optymize_xyz]. I noticed that it is an increasing new market in web3. The behaviors of the market are greatly different from those of traditional markets. More attention should be put on the scam issue, the extent of success in building the community, and so on.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;iii) I do not add the money market into the word banks. It is because the money markets feature in short YTM (year to maturity) and higher opportunity costs. The money market often yields just 2% or 3% while common stocks have returned about 8% to 10% on average. Although the money market owns the advantages of liquidity, monitoring this market is against the initial purpose of this project, which is to create text analytics for better investment strategies in a longer time interval. Thus, the money market is filtered out.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Considering these reasons, I think it is practical, necessary, and efficient to set up multiple word banks for different markets to yield high performance in scraping information for financial analytics.&lt;/p&gt;
+&lt;p&gt;After the separation of markets, work bank construction is rather essential. Here are some initial thoughts on the focus on each markets.&lt;/p&gt;
+&lt;p&gt;For crypto market, things are more uncertain and usually out of our expectation. From my point of view, we cannot rely on traditional financial insights to analysis the market trend heavily. First of all, we should focus on the bear market and bull market discussion. The general environment usually are the consequences of multiple aspects, such as policies posed on digital assets, new machanism on chain and so on. Monitoring some gaints and OGs on twitter and Analysis on their prediction on the conditions insides the crypto market is very important. It will help us avoid risk in the investment of crypto.&lt;/p&gt;</content><category term="Progress Report"></category><category term="Group 6 EvGPT"></category></entry><entry><title>Demo Blog Post</title><link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/demo-blog-post.html" rel="alternate"></link><published>2023-01-31T01:12:00+08:00</published><updated>2023-01-31T01:12:00+08:00</updated><author><name>FINA4350 Students 2023</name></author><id>tag:buehlmaier.github.io,2023-01-31:/FINA4350-student-blog-2023-01/demo-blog-post.html</id><summary type="html">&lt;p&gt;By Group "Super NLP"&lt;/p&gt;
 &lt;p&gt;This is a demo blog post. Its purpose is to show how to use the basic
 functionality of Markdown in the context of a blog post.&lt;/p&gt;
 &lt;h2&gt;How to Include a Link and Python Code&lt;/h2&gt;
