@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/css/custom.css" media="screen">
+
         <link rel="dns-prefetch" href="//fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 
@@ -14,17 +15,18 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
+<meta name="keywords" content="Group 1 remarC, Progress Report, " />
 
-<meta property="og:title" content="Blogging About Text Analytics and NLP in Finance and Fintech "/>
-<meta property="og:url" content="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/pages/landing-page-about-hidden.html" />
-<meta property="og:description" content="This blog is written by students at the University of Hong Kong (HKU). It serves two purposes: First, to document students&#39; reflections about their learning progress. Second, to showcase some of the results students have obtained as part of their projects. The blog post contents do not necessarily reflect the …" />
+<meta property="og:title" content="Inverse Jim Cramer Project Overview (by &#34;Group 1&#34;) "/>
+<meta property="og:url" content="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/inverse-jim-cramer-project-overview-by-group-1.html" />
+<meta property="og:description" content="Introduction In this blog, I will share with you an overview of our project and how we came up with the idea. Background Jim Cramer is a well-known financial analyst and host of the CNBC show &#34;Mad Money.&#34; He has a large following of retail investors who often follow his …" />
 <meta property="og:site_name" content="FINA4350 Student Blog 2023" />
 <meta property="og:article:author" content="FINA4350 Students 2023" />
-<meta property="og:article:published_time" content="2023-01-01T19:30:00+08:00" />
-<meta name="twitter:title" content="Blogging About Text Analytics and NLP in Finance and Fintech ">
-<meta name="twitter:description" content="This blog is written by students at the University of Hong Kong (HKU). It serves two purposes: First, to document students&#39; reflections about their learning progress. Second, to showcase some of the results students have obtained as part of their projects. The blog post contents do not necessarily reflect the …">
+<meta property="og:article:published_time" content="2023-04-12T10:00:00+08:00" />
+<meta name="twitter:title" content="Inverse Jim Cramer Project Overview (by &#34;Group 1&#34;) ">
+<meta name="twitter:description" content="Introduction In this blog, I will share with you an overview of our project and how we came up with the idea. Background Jim Cramer is a well-known financial analyst and host of the CNBC show &#34;Mad Money.&#34; He has a large following of retail investors who often follow his …">
 
-        <title>Blogging About Text Analytics and NLP in Finance and Fintech  · FINA4350 Student Blog 2023
+        <title>Inverse Jim Cramer Project Overview (by &#34;Group 1&#34;)  · FINA4350 Student Blog 2023
 </title>
         <link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="FINA4350 Student Blog 2023 - Full Atom Feed" />
 
@@ -62,40 +64,51 @@
                 <div class="row-fluid">
                     <div class="span1"></div>
                     <div class="span10">
-<article>
+<article itemscope>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/pages/landing-page-about-hidden.html"> Blogging About Text Analytics and NLP in Finance and Fintech  </a></h1>
+        <h1>
+            <a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/inverse-jim-cramer-project-overview-by-group-1.html">
+                Inverse Jim Cramer Project Overview (by "Group 1")
+            </a>
+        </h1>
     </header>
 </div>
 
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
+            
+            <h1>Introduction</h1>
+<p>In this blog, I will share with you an overview of our project and how we came up with the idea.</p>
+<h2>Background</h2>
+<p>Jim Cramer is a well-known financial analyst and host of the CNBC show "Mad Money." He has a large following of retail investors who often follow his stock recommendations. At the mean time, he has been criticized for making incorrect or misleading stock market predictions. Some of his most notable bad predictions include:</p>
+<ol>
+<li>Bear Stearns: In 2008, Cramer said that Bear Stearns was "fine" just days before the company collapsed and was sold to JPMorgan Chase for a fraction of its previous value.</li>
+<li>Lehman Brothers: Also in 2008, Cramer predicted that Lehman Brothers would not go bankrupt, just weeks before the company filed for Chapter 11 bankruptcy protection.</li>
+<li>Apple: In 2012, Cramer predicted that Apple's stock price would continue to rise and that the company was a "buy" at $700 per share. However, the stock price later declined significantly, reaching a low of around $90 per share in 2016.</li>
+<li>General Electric: In 2017, Cramer recommended that viewers buy shares of General Electric, stating that the company was "too cheap to ignore". However, the stock price continued to decline in the following years, and the company eventually cut its dividend and experienced significant financial difficulties.</li>
+</ol>
+<p>Based on Jim Cramer's track record of poor predictions in the stock market, we assumed that taking an inverse approach to his recommendations could potentially lead to a profitable trading strategy.</p>
+<h2>Objectives</h2>
+<p>This project aims to clarify the following questions.</p>
+<ol>
+<li>Does the inverse Cramer effect actually exist? Or is it simply selection bias?</li>
+<li>What is the  time frame in which the effect manifests itself?</li>
+<li>If the effect exists, which sector is it most significant in?</li>
+</ol>
+<h2>Methodology</h2>
+<p>To answer these questions, we embarked on a comprehensive study that involved developing a trading strategy based on the inverse of Jim Cramer's stock recommendations using sentiment analysis. Our objective was to analyze the sentiment of Cramer's recommendations and leverage that information to inform our trades. We believed that sentiment analysis could help us better understand the emotional state of the market and make more informed trading decisions.</p>
+<p>To achieve this, we used natural language processing (NLP) and sentiment analysis techniques to analyze the Jim Cramer's tweets and the transcripts of his show "Mad Money" and determine the sentiment of his stock recommendations. Specifically, we employed a sentiment analysis algorithm that assigns a positive, negative, or neutral sentiment score to each piece of text.</p>
+<p>Having analyzed the sentiment of Cramer's recommendations, we developed a trading strategy based on the inverse of his recommendations. We went against his opinion and sentiment by selling the stocks he recommended to buy and buying the stocks he recommended to sell. Our strategy aimed to capitalize on the inverse Cramer effect, which suggests that going against Cramer's recommendations may be a profitable trading strategy.</p>
+<p>By developing an inverse trading strategy, we aimed to test the validity of the inverse Cramer effect and whether it could be leveraged to achieve better returns. Our approach was grounded in the belief that sentiment analysis can provide valuable insights into the emotional state of the market, and that leveraging this information could lead to more informed trading decisions.</p>
+<p>Overall, our project involved a rigorous analysis of Jim Cramer's stock recommendations and the development of an inverse trading strategy based on sentiment analysis. By going against Cramer's recommendations and leveraging sentiment analysis, we aimed to explore the potential of the inverse Cramer effect as a profitable trading strategy.</p>
+<p>Throughout the development of our project, we faced a number of challenges and tried various techniques to improve our strategy. In the upcoming blogs, I will share with you our journey and the different approaches we took to create a successful trading strategy.</p>
 
-            <p>This blog is written by students at the University of Hong Kong
-(HKU). It serves two purposes: First, to document students'
-reflections about their learning progress. Second, to showcase some of
-the results students have obtained as part of their projects. The blog
-post contents do not necessarily reflect the opinion(s) of the course
-instructor or HKU.</p>
-<p>The topics of the blog posts are about text analytics and natural
-language processing (NLP) in finance and fintech. At any rate, keep in
-mind that this blog is "work in progress." The blog is updated
-throughout the course as new blog posts become available.</p>
-<p>The list of blog posts below only shows the most recent posts. <strong>To
-view all blog posts, click on "all posts" below.</strong></p>
-<p>Names of student groups (in order of sign-up):</p>
-<ul>
-<li>Group 8</li>
-<li>Group TSS</li>
-<li>Group Aixchange</li>
-<li>Sibo</li>
-<li>Group 2</li>
-<li>Group EvGPT</li>
-<li>Group 1 remarC</li>
-</ul>
-<p>The source code of this blog is available on
-<a href="https://github.com/buehlmaier/FINA4350-student-blog-2023-01">GitHub</a>.</p>
+
+             
+ 
+            
+            
             
 
 
@@ -104,9 +117,40 @@ view all blog posts, click on "all posts" below.</strong></p>
 
 
 
+            <hr/>
         </div>
-    </div>
-    </article>
+        <section id="article-sidebar" class="span2">
+            <h4>Published</h4>
+            <time itemprop="dateCreated" datetime="2023-04-12T10:00:00+08:00">Wed 12 April 2023</time>
+            <h4>Category</h4>
+            <a class="category-link" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/categories.html#progress-report-ref">Progress Report</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/tags.html#group-1-remarc-ref">Group 1 remarC
+                    <span class="superscript">4</span>
+</a></li>
+            </ul>
+<h4>Contact</h4>
+<div id="sidebar-social-link">
+    <a href="https://github.com/buehlmaier/FINA4350-student-blog-2023-01" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1B1817"/><path fill="#fff" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+    </a>
+</div>
+            
+
+
+
+
+
+            
+
+
+
+
+
+        </section>
+</div>
+</article>
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 

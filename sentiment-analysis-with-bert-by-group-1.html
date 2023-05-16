@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/css/custom.css" media="screen">
+
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+        <meta name="author" content="FINA4350 Students 2023" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="Group 1 remarC, Progress Report, " />
+
+<meta property="og:title" content="Sentiment Analysis with BERT (by &#34;Group 1&#34;) "/>
+<meta property="og:url" content="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/sentiment-analysis-with-bert-by-group-1.html" />
+<meta property="og:description" content="In this blog post, we will introduce how we use BERT to analyse the text data collected from the previous post. BERT BERT (Bidirectional Encoder Representations from Transformers) is a pre-trained natural language processing (NLP) model developed by Google. It is based on the Transformer architecture, which is a neural …" />
+<meta property="og:site_name" content="FINA4350 Student Blog 2023" />
+<meta property="og:article:author" content="FINA4350 Students 2023" />
+<meta property="og:article:published_time" content="2023-04-19T10:00:00+08:00" />
+<meta name="twitter:title" content="Sentiment Analysis with BERT (by &#34;Group 1&#34;) ">
+<meta name="twitter:description" content="In this blog post, we will introduce how we use BERT to analyse the text data collected from the previous post. BERT BERT (Bidirectional Encoder Representations from Transformers) is a pre-trained natural language processing (NLP) model developed by Google. It is based on the Transformer architecture, which is a neural …">
+
+        <title>Sentiment Analysis with BERT (by &#34;Group 1&#34;)  · FINA4350 Student Blog 2023
+</title>
+        <link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="FINA4350 Student Blog 2023 - Full Atom Feed" />
+
+
+
+    </head>
+    <body>
+        <div id="content">
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/"><span class=site-name>FINA4350 Student Blog 2023</span></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right top-menu">
+                                <li >
+                                    <a href=
+                                       https://buehlmaier.github.io/FINA4350-student-blog-2023-01
+                                    >Home</a>
+                                </li>
+                                <li ><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/categories.html">Categories</a></li>
+                                <li ><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/tags.html">Tags</a></li>
+                                <li ><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/archives.html">Archives</a></li>
+                                <li><form class="navbar-search" action="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span10">
+<article itemscope>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+        <h1>
+            <a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/sentiment-analysis-with-bert-by-group-1.html">
+                Sentiment Analysis with BERT (by "Group 1")
+            </a>
+        </h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+            
+            <p>In this blog post, we will introduce how we use BERT to analyse the text data collected from the previous post.</p>
+<h2>BERT</h2>
+<p>BERT (Bidirectional Encoder Representations from Transformers) is a pre-trained natural language processing (NLP) model developed by Google. It is based on the Transformer architecture, which is a neural network architecture designed to handle sequential data, such as natural language. The model is pre-trained on a large corpus of text data and can be fine-tuned on specific NLP tasks, such as sentiment analysis, question-answering, and text classification. It has achieved state-of-the-art results on many NLP benchmarks and has become a popular choice for NLP tasks.</p>
+<p>One advantage of BERT is that it is bidirectional. To be more specific, it processes text in both directions, allowing it to capture the full context of a word and the relationship between words in a sentence. This approach is different from previous models that processed words in one direction only. BERT's bidirectional nature has contributed to its success in various NLP tasks and has revolutionized the field of NLP by improving machines' understanding of human language.</p>
+<p>In this project, we will use BERT to analyse Jim Cramer's attitude towards each stocks he mentioned, rating them on a scale from 1 (most negative) to 5 (most positive).</p>
+<h3>Model selection</h3>
+<p>We chose nlptown/bert-base-multilingual-uncased-sentiment as our NLP model. It is designed to be language-agnostic, meaning that it can analyze sentiment in text from any language without the need for language-specific models. This is useful when sentiment analysis is performed across multiple languages, such as social media monitoring. Also, the model is "uncased," meaning that it does not differentiate between capitalized and lowercase letters, making it more flexible in its ability to analyze text in different formats.</p>
+<h3>Tokenization</h3>
+<p>Tokenization is an essential step in NLP, as it allows the model to understand the structure and meaning of the text. The nlptown/bert-base-multilingual-uncased-sentiment model tokenizes text using a technique called WordPiece tokenization. WordPiece is a subword tokenization method in which the model learns to segment words into smaller subwords based on the frequency of those subwords in the training data.</p>
+<p>For example, the word "unhappy" might be broken down into two subwords: "un" and "happy." By doing so, the model can capture the meaning of the word "unhappy" more accurately, as it can understand the relationship between the negative prefix "un" and the positive word "happy."</p>
+<h3>Encoding</h3>
+<p>Encoding involves converting text into numerical vectors that can be understood and processed by NLP models. Our model uses a technique called transformer-based encoding. It feeds the tokens into a deep neural network. Such a network consists of multiple layers of transformers, which are capable of processing text in a bidirectional manner, capturing the context of words in both directions. Finally, a numerical vector representing the meaning of the token based on the context of the surrounding words is outputed.</p>
+<p>nlptown/bert-base-multilingual-uncased-sentiment provides an easy way for us to encode the text in a few lines.</p>
+<div class="highlight"><pre><span></span><code>tokenizer = AutoTokenizer.from_pretrained(&#39;nlptown/bert-base-multilingual-uncased-sentiment&#39;)
+tokens = tokenizer.encode(row[&#39;Text&#39;], return_tensors=&#39;pt&#39;)
+</code></pre></div>
+
+<h3>Classification</h3>
+<p>Classification in sentiment analysis means assigning sentiment labels to text, such as positive, negative, or neutral. Once the input text has been encoded, the encoded text vectors are fed into the neural network classifier. The classifier applies a set of matrix transformations and nonlinear functions to the encoded text vectors to generate a prediction of the sentiment label. Specifically, the neural network takes the sequence of encoded text vectors as input and applies a series of dense layers, followed by a final softmax layer, to generate a distribution over the possible sentiment labels.</p>
+<h3>Output</h3>
+<p>The model outputs a score representing the sentiment expressed in the text, ranging from 1 (most negative) to 5 (most positive). For example, the model outputs a score of 1 for "To me the worst quarter of the season so far is $MMM. Just dismal with a 'dry' January included", indicating that it expresses highly negative sentiment.</p>
+<h2>Conclusion and reflections</h2>
+<p>Through this experience, we have realized the importance of the tokenization and encoding process in capturing the true meaning and context of the text. We found the nlptown/bert-base-multilingual-uncased-sentiment model to be a versatile and effective tool for analyzing sentiment in text across multiple languages. Using WordPiece tokenization and transformer-based encoding, it can accurately predict sentiment labels for input text in a variety of formats.</p>
+<p>Owing to time constraints, we were not able to fine-tune the model on our data. We believe that fine-tuning the model on our data would improve its performance, as it would learn to recognize the jargons used in financial commentary and the style of Jim Cramer.</p>
+
+
+             
+ 
+            
+            
+            
+
+
+
+
+
+
+
+            <hr/>
+        </div>
+        <section id="article-sidebar" class="span2">
+            <h4>Published</h4>
+            <time itemprop="dateCreated" datetime="2023-04-19T10:00:00+08:00">Wed 19 April 2023</time>
+            <h4>Category</h4>
+            <a class="category-link" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/categories.html#progress-report-ref">Progress Report</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/tags.html#group-1-remarc-ref">Group 1 remarC
+                    <span class="superscript">4</span>
+</a></li>
+            </ul>
+<h4>Contact</h4>
+<div id="sidebar-social-link">
+    <a href="https://github.com/buehlmaier/FINA4350-student-blog-2023-01" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1B1817"/><path fill="#fff" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+    </a>
+</div>
+            
+
+
+
+
+
+            
+
+
+
+
+
+        </section>
+</div>
+</article>
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>                    </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+        </div>
+<footer>
+
+
+
+
+    <div id="fpowered">
+        Powered by: <a href="http://getpelican.com/" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>
+        Theme: <a href="https://elegant.oncrashreboot.com/" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>
+    </div>
+</footer>            <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/js/elegant.prod.9e9d5ce754.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    <script>
+    (function () {
+        if (window.location.hash.match(/^#comment-\d+$/)) {
+            $('#comment_thread').collapse('show');
+        }
+    })();
+    window.onhashchange=function(){
+        if (window.location.hash.match(/^#comment-\d+$/))
+            window.location.reload(true);
+    }
+    $('#comment_thread').on('shown', function () {
+        var link = document.getElementById('comment-accordion-toggle');
+        var old_innerHTML = link.innerHTML;
+        $(link).fadeOut(200, function() {
+            $(this).text('Click here to hide comments').fadeIn(200);
+        });
+        $('#comment_thread').on('hidden', function () {
+            $(link).fadeOut(200, function() {
+                $(this).text(old_innerHTML).fadeIn(200);
+            });
+        })
+    })
+</script>
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+        License : MIT -->
+</html>
