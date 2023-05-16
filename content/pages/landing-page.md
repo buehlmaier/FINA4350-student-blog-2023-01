@@ -24,10 +24,11 @@ Names of student groups (in order of sign-up):
 
   * Group 8
   * Group TSS
-  * Group Aixchange
+  * Group 4 Aixchange
   * Sibo
   * Group 2
   * Group EvGPT
+  * Group 1 remarC
 
 The source code of this blog is available on
 [GitHub](https://github.com/buehlmaier/FINA4350-student-blog-2023-01).
