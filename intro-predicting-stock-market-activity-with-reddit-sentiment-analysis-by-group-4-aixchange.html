@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/css/custom.css" media="screen">
+
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+        <meta name="author" content="FINA4350 Students 2023" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="Group4, Progress Report, " />
+
+<meta property="og:title" content="Intro — Predicting stock market activity with Reddit sentiment analysis (by &#34;Group 4 Aixchange&#34;) "/>
+<meta property="og:url" content="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/intro-predicting-stock-market-activity-with-reddit-sentiment-analysis-by-group-4-aixchange.html" />
+<meta property="og:description" content="By &#34;Group 4&#34; (1) First Steps Objective: We&#39;re curious about the degree of impact that retail investors have on the stock market. With the rise in popularity of trading platforms designed for the average joe, like Robinhood and WeBull, we&#39;ve also seen unprecedented amount of retail trading volume in the …" />
+<meta property="og:site_name" content="FINA4350 Student Blog 2023" />
+<meta property="og:article:author" content="FINA4350 Students 2023" />
+<meta property="og:article:published_time" content="2023-03-31T01:12:00+08:00" />
+<meta name="twitter:title" content="Intro — Predicting stock market activity with Reddit sentiment analysis (by &#34;Group 4 Aixchange&#34;) ">
+<meta name="twitter:description" content="By &#34;Group 4&#34; (1) First Steps Objective: We&#39;re curious about the degree of impact that retail investors have on the stock market. With the rise in popularity of trading platforms designed for the average joe, like Robinhood and WeBull, we&#39;ve also seen unprecedented amount of retail trading volume in the …">
+
+        <title>Intro — Predicting stock market activity with Reddit sentiment analysis (by &#34;Group 4 Aixchange&#34;)  · FINA4350 Student Blog 2023
+</title>
+        <link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="FINA4350 Student Blog 2023 - Full Atom Feed" />
+
+
+
+    </head>
+    <body>
+        <div id="content">
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/"><span class=site-name>FINA4350 Student Blog 2023</span></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right top-menu">
+                                <li >
+                                    <a href=
+                                       https://buehlmaier.github.io/FINA4350-student-blog-2023-01
+                                    >Home</a>
+                                </li>
+                                <li ><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/categories.html">Categories</a></li>
+                                <li ><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/tags.html">Tags</a></li>
+                                <li ><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/archives.html">Archives</a></li>
+                                <li><form class="navbar-search" action="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span10">
+<article itemscope>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+        <h1>
+            <a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/intro-predicting-stock-market-activity-with-reddit-sentiment-analysis-by-group-4-aixchange.html">
+                Intro — Predicting stock market activity with Reddit sentiment analysis (by "Group 4 Aixchange")
+            </a>
+        </h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+            
+            <p>By "Group 4"</p>
+<h2>(1) First Steps</h2>
+<p>Objective:<br>
+We're curious about the degree of impact that retail investors have on the stock market. With the rise in popularity of trading platforms designed for the average joe, like Robinhood and WeBull, we've also seen unprecedented amount of retail trading volume in the market, with retail investors overtaking quant hedge funds in 2019. In line with our curiosity, we've designed the following objective for this project:</p>
+<blockquote>
+<p>To find whether popular sentiment towards stocks on the r/wallstreetbets subreddit positively correlates with the stocks' direction of price change at market close after various periods (end-of-day, end-of-week, and end-of-month). We will focus on the US stock market, i.e. tickers available for trading on NASDAQ and NYSE, over a period of a month.</p>
+</blockquote>
+<p>Details:<br>
+In particular, we want to look at posts with a title containing the string "What Are Your Moves Tomorrow", as user activity on this topic purportedly predicts movement in the stock market. Then, a regression is run on the actual market activity of mentioned stocks one day after the post.</p>
+<p>Time period:<br>
+28 February 2023 00:00:00 GMT – 31 March 2023 00:00:00 GMT<br>
+<em>Rationale: Most recently completed month. Going back further in time runs the risk of coming across mentions of companies that are no longer listed on NASDAQ or NYSE. Publicly available data on such delisted companies is sparse and unreliable.</em></p>
+<p>Hypothesis:<br>
+The sentiment of the community active on r/wallstreetbets does not constitute a force coordinated enough to move the market against the currents generated by other retail investors, let alone bulge bracket firms, quantitative hedge funds, and market makers. Instead, we predict that by regressing the biggest movers of the previous day against the most commonly discussed stocks the next day, we will see that Redditors' sentiments are influenced by historical market activity.</p>
+<h2>(1 and a ½) Meet the Team <em>(Bonus Section!)</em></h2>
+<p>Our team is composed of Ryan, Carson, and Sami. If I (Ryan) recall correctly, only Sami has any real programming experience in school. The rest of us were only just tangentially interested in FinTech and decided to take this course on a whim. Ironically, Ryan ended up writing the bulk of the code, which is why it is so clunky and inelegant.</p>
+<p>Back to regular blog programming in 3, 2, 1...</p>
+<h2>(2) Data Collection</h2>
+<p>PRAW was instrumental in collecting our data. We considered other methods of obtaining Reddit data, such as pre-compiled sources of Reddit via Pushshift.io, using an abstracted scraper like Reddit Data Extractor, or building our own headless browser-based program (e.g., with Puppeteer). However, we found that PRAW was the most reliable, as the data was "live" and came directly from Reddit. ("Live in the sense that it was not a snapshot of user-generated content, unlike the archived data available through Pushshift was.) However, since Reddit does not store edit history or deleted comments, the live nature of such data meant that we encountered some instances where the comment didn't make sense, or was no longer available. Additionally, we found that there was minimal difference in time spent scraping when using PRAW versus APRAW, as we were rate-limited anyway. (We did not use multiple accounts, VPNS, proxies, as that feels to be in violation of some sort of Terms of Service.)</p>
+<p>Let's get into our requirements and how that translated into code. For each post, we wanted to examine all stocks mentioned in the top-level comments, keeping Title, Author, Body (the actual comment), and Score (number of upvotes). With the PRAW interface, this was simple enough to do:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="nv">submission</span> <span class="nv">in</span> <span class="nv">subreddit</span>.<span class="nv">search</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">flair_name:&quot;Daily Discussion&quot;</span><span class="s1">&#39;</span>, <span class="nv">limit</span><span class="o">=</span><span class="nv">None</span><span class="ss">)</span>:
+    <span class="k">if</span> <span class="nv">start_date</span> <span class="o">&lt;=</span> <span class="nv">datetime</span>.<span class="nv">fromtimestamp</span><span class="ss">(</span><span class="nv">submission</span>.<span class="nv">created_utc</span><span class="ss">)</span> <span class="o">&lt;=</span> <span class="nv">end_date</span>:
+        <span class="k">if</span> <span class="s2">&quot;</span><span class="s">What Are Your Moves</span><span class="s2">&quot;</span> <span class="nv">in</span> <span class="nv">submission</span>.<span class="nv">title</span>:
+            <span class="k">for</span> <span class="nv">comment</span> <span class="nv">in</span> <span class="nv">submission</span>.<span class="nv">comments</span>:
+                <span class="k">if</span> <span class="nv">isinstance</span><span class="ss">(</span><span class="nv">comment</span>, <span class="nv">praw</span>.<span class="nv">models</span>.<span class="nv">MoreComments</span><span class="ss">)</span>:
+                    <span class="k">continue</span>
+
+                <span class="nv">titles</span>.<span class="nv">append</span><span class="ss">(</span><span class="nv">submission</span>.<span class="nv">title</span><span class="ss">)</span>
+                <span class="nv">authors</span>.<span class="nv">append</span><span class="ss">(</span><span class="nv">comment</span>.<span class="nv">author</span><span class="ss">)</span>
+                <span class="nv">comments</span>.<span class="nv">append</span><span class="ss">(</span><span class="nv">comment</span>.<span class="nv">body</span><span class="ss">)</span>
+                <span class="nv">upvotes</span>.<span class="nv">append</span><span class="ss">(</span><span class="nv">comment</span>.<span class="nv">score</span><span class="ss">)</span>
+</code></pre></div>
+
+<p>Then we wrote this data down into a .csv file, as it was small and manageable enough to forego any need for a database. Overall, data collection was pretty simple, except for the time when we decided that we also wanted upvotes in addition to the comment body. (The first set of scraped data omitted this.) We had to run the slow process of scraping again, which took about an hour to complete.</p>
+<h2>(2) Data Cleaning — Terrible, Terrible, Grunt Work (made surprisingly easy with NLTK!)</h2>
+<p>We had to remove all sorts of gunk from the comments, including emojis, GIFS, and embedded media. Redditors really like to add lots of colour to their online quips. After this was pretty smooth sailing in the pre-processing bit. Tokenization and lemmatization were simple enough with these magical tools:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">RegexpTokenizer</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">WordNetLemmatizer</span>
+</code></pre></div>
+
+<p>Seeing the tokenized and lemmatized comments was pretty impressive to me. Of course, the journey doesn't end here. Now, the data was ready for us to apply other cool processes to it, like entity recognition and sentiment analysis.</p>
+
+
+             
+ 
+            
+            
+            
+
+
+
+
+
+
+
+            <hr/>
+        </div>
+        <section id="article-sidebar" class="span2">
+            <h4>Published</h4>
+            <time itemprop="dateCreated" datetime="2023-03-31T01:12:00+08:00">Fri 31 March 2023</time>
+            <h4>Category</h4>
+            <a class="category-link" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/categories.html#progress-report-ref">Progress Report</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/tags.html#group4-ref">Group4
+                    <span class="superscript">2</span>
+</a></li>
+            </ul>
+<h4>Contact</h4>
+<div id="sidebar-social-link">
+    <a href="https://github.com/buehlmaier/FINA4350-student-blog-2023-01" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1B1817"/><path fill="#fff" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+    </a>
+</div>
+            
+
+
+
+
+
+            
+
+
+
+
+
+        </section>
+</div>
+</article>
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>                    </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+        </div>
+<footer>
+
+
+
+
+    <div id="fpowered">
+        Powered by: <a href="http://getpelican.com/" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>
+        Theme: <a href="https://elegant.oncrashreboot.com/" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>
+    </div>
+</footer>            <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/js/elegant.prod.9e9d5ce754.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    <script>
+    (function () {
+        if (window.location.hash.match(/^#comment-\d+$/)) {
+            $('#comment_thread').collapse('show');
+        }
+    })();
+    window.onhashchange=function(){
+        if (window.location.hash.match(/^#comment-\d+$/))
+            window.location.reload(true);
+    }
+    $('#comment_thread').on('shown', function () {
+        var link = document.getElementById('comment-accordion-toggle');
+        var old_innerHTML = link.innerHTML;
+        $(link).fadeOut(200, function() {
+            $(this).text('Click here to hide comments').fadeIn(200);
+        });
+        $('#comment_thread').on('hidden', function () {
+            $(link).fadeOut(200, function() {
+                $(this).text(old_innerHTML).fadeIn(200);
+            });
+        })
+    })
+</script>
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+        License : MIT -->
+</html>

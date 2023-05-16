@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/theme/css/custom.css" media="screen">
+
         <link rel="dns-prefetch" href="//fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 
@@ -14,17 +15,18 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
+<meta name="keywords" content="Group4, Progress Report, " />
 
-<meta property="og:title" content="Blogging About Text Analytics and NLP in Finance and Fintech "/>
-<meta property="og:url" content="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/pages/landing-page-about-hidden.html" />
-<meta property="og:description" content="This blog is written by students at the University of Hong Kong (HKU). It serves two purposes: First, to document students&#39; reflections about their learning progress. Second, to showcase some of the results students have obtained as part of their projects. The blog post contents do not necessarily reflect the …" />
+<meta property="og:title" content="Wrenching Meaning From Chaos — How we selected our way of doing things (by &#34;Group 4 Aixchange&#34;) "/>
+<meta property="og:url" content="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/wrenching-meaning-from-chaos-how-we-selected-our-way-of-doing-things-by-group-4-aixchange.html" />
+<meta property="og:description" content="By &#34;Group 4&#34; The problem When it came time to pick out mentions of stock symbols in the Reddit comments, we explored the possibility of using NER (named entity recognition). As such, we attempted to build a recognizer using NLTK and SpaCy library, but we quickly ran into trouble. Although …" />
 <meta property="og:site_name" content="FINA4350 Student Blog 2023" />
 <meta property="og:article:author" content="FINA4350 Students 2023" />
-<meta property="og:article:published_time" content="2023-01-01T19:30:00+08:00" />
-<meta name="twitter:title" content="Blogging About Text Analytics and NLP in Finance and Fintech ">
-<meta name="twitter:description" content="This blog is written by students at the University of Hong Kong (HKU). It serves two purposes: First, to document students&#39; reflections about their learning progress. Second, to showcase some of the results students have obtained as part of their projects. The blog post contents do not necessarily reflect the …">
+<meta property="og:article:published_time" content="2023-04-30T01:12:00+08:00" />
+<meta name="twitter:title" content="Wrenching Meaning From Chaos — How we selected our way of doing things (by &#34;Group 4 Aixchange&#34;) ">
+<meta name="twitter:description" content="By &#34;Group 4&#34; The problem When it came time to pick out mentions of stock symbols in the Reddit comments, we explored the possibility of using NER (named entity recognition). As such, we attempted to build a recognizer using NLTK and SpaCy library, but we quickly ran into trouble. Although …">
 
-        <title>Blogging About Text Analytics and NLP in Finance and Fintech  · FINA4350 Student Blog 2023
+        <title>Wrenching Meaning From Chaos — How we selected our way of doing things (by &#34;Group 4 Aixchange&#34;)  · FINA4350 Student Blog 2023
 </title>
         <link href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="FINA4350 Student Blog 2023 - Full Atom Feed" />
 
@@ -62,40 +64,43 @@
                 <div class="row-fluid">
                     <div class="span1"></div>
                     <div class="span10">
-<article>
+<article itemscope>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/pages/landing-page-about-hidden.html"> Blogging About Text Analytics and NLP in Finance and Fintech  </a></h1>
+        <h1>
+            <a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/wrenching-meaning-from-chaos-how-we-selected-our-way-of-doing-things-by-group-4-aixchange.html">
+                Wrenching Meaning From Chaos — How we selected our way of doing things (by "Group 4 Aixchange")
+            </a>
+        </h1>
     </header>
 </div>
 
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
+            
+            <p>By "Group 4"</p>
+<h2>The problem</h2>
+<p>When it came time to pick out mentions of stock symbols in the Reddit comments, we explored the possibility of using NER (named entity recognition). As such, we attempted to build a recognizer using NLTK and <a href="https://spacy.io/">SpaCy library</a>, but we quickly ran into trouble. Although stock symbols are key elements in the text of Reddit comments, we discovered that content on Reddit is quite deviant from what one would consider functional dialogue. There were far too many mentions of various entities, such the names of people's dogs, wives, and neighbours. (Interestingly, many comments made reference to the same few recurring figures in the world of finance and stock market trading. These popular figures went by a myriad of names: For example, Jerome Powell, the Chair of the Federal Reserve, is known to Redditors as "J-Pow", the "Money Printer", "The Fedfather", and "Printer-in-Chief.")</p>
+<h2>The solution — kind of</h2>
+<p>With our team's collective years of experience scrolling on Reddit, we decided that top-level comments were usually well-formatted, with minimal grammatical or orthographic errors. With this in mind, we thought it effective enough for the purposes of this project to apply a simple regex that attempted to find exact (i.e. properly uppercased) matches of NASDAQ and NYSE tickers to a dataframe of listed companies. Besides, most comments were merely manifestations of people's daily rage — a series of senseless rants that had nothing to do with stock price and volume predictions.</p>
+<h2>The second problem</h2>
+<p>Although we were right in assuming that most top-level comments were free of spelling mistakes, we could not get around the fact that many common words were also valid stock symbols. Let me illustrate our frustrations. Consider the following comment (excuse the profanity — it references a song by Mike Posner):</p>
+<div class="highlight"><pre><span></span><code><span class="nv">I</span> <span class="nv">took</span> <span class="nv">a</span> <span class="nv">pill</span> <span class="nv">in</span> <span class="nv">Ibiza</span>
 
-            <p>This blog is written by students at the University of Hong Kong
-(HKU). It serves two purposes: First, to document students'
-reflections about their learning progress. Second, to showcase some of
-the results students have obtained as part of their projects. The blog
-post contents do not necessarily reflect the opinion(s) of the course
-instructor or HKU.</p>
-<p>The topics of the blog posts are about text analytics and natural
-language processing (NLP) in finance and fintech. At any rate, keep in
-mind that this blog is "work in progress." The blog is updated
-throughout the course as new blog posts become available.</p>
-<p>The list of blog posts below only shows the most recent posts. <strong>To
-view all blog posts, click on "all posts" below.</strong></p>
-<p>Names of student groups (in order of sign-up):</p>
-<ul>
-<li>Group 8</li>
-<li>Group TSS</li>
-<li>Group 4 Aixchange</li>
-<li>Sibo</li>
-<li>Group 2</li>
-<li>Group EvGPT</li>
-<li>Group 1 remarC</li>
-</ul>
-<p>The source code of this blog is available on
-<a href="https://github.com/buehlmaier/FINA4350-student-blog-2023-01">GitHub</a>.</p>
+<span class="nv">To</span> <span class="k">show</span> <span class="nv">members</span> <span class="nv">of</span> <span class="nv">WSB</span> <span class="nv">I</span> <span class="nv">was</span> <span class="nv">cool</span>
+
+<span class="nv">But</span> <span class="nv">when</span> <span class="nv">I</span> <span class="nv">lost</span> <span class="mh">$10</span><span class="nv">k</span> <span class="nv">in</span> <span class="nv">one</span> <span class="nv">day</span> <span class="nv">to</span> <span class="nv">CPI</span>, <span class="nv">I</span> <span class="nv">was</span> <span class="nv">sad</span> <span class="nv">but</span> <span class="nv">f</span><span class="o">***</span> <span class="nv">it</span> <span class="nv">was</span> <span class="nv">something</span> <span class="nv">to</span> <span class="k">do</span>.
+</code></pre></div>
+
+<h2>Another bonus problem</h2>
+<p>FRC got delisted as we were running the model on updated (i.e., improved and rescraped) data.</p>
+<p>We realized that companies at risk of being delisted are frequently discussed shortly before the actual delisting event. However, we are not able to access price history of delisted companies on Yahoo! Finance (via the YFinance API).</p>
+
+
+             
+ 
+            
+            
             
 
 
@@ -104,9 +109,40 @@ view all blog posts, click on "all posts" below.</strong></p>
 
 
 
+            <hr/>
         </div>
-    </div>
-    </article>
+        <section id="article-sidebar" class="span2">
+            <h4>Published</h4>
+            <time itemprop="dateCreated" datetime="2023-04-30T01:12:00+08:00">Sun 30 April 2023</time>
+            <h4>Category</h4>
+            <a class="category-link" href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/categories.html#progress-report-ref">Progress Report</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="https://buehlmaier.github.io/FINA4350-student-blog-2023-01/tags.html#group4-ref">Group4
+                    <span class="superscript">2</span>
+</a></li>
+            </ul>
+<h4>Contact</h4>
+<div id="sidebar-social-link">
+    <a href="https://github.com/buehlmaier/FINA4350-student-blog-2023-01" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1B1817"/><path fill="#fff" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+    </a>
+</div>
+            
+
+
+
+
+
+            
+
+
+
+
+
+        </section>
+</div>
+</article>
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
